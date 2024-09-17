@@ -8,8 +8,5 @@ export const genericHandler = (
 ) => {
   console.error(err);
   res.status(500);
-  res.json({
-    error: "InternalServerError",
-    message: "The server encountered an internal error",
-  });
+  res.json({});
 };
