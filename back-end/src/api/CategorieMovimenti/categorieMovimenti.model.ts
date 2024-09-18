@@ -6,6 +6,22 @@ const CategorieMovimentiSchema: Schema = new Schema({
   tipologia: { type: String, required: true, enum: ["Entrata", "Uscita"] },
 });
 
+CategorieMovimentiSchema.set("toJSON", {
+  transform: (_, ret) => {
+    delete ret._id;
+    delete ret.__v;
+    return ret;
+  },
+});
+
+CategorieMovimentiSchema.set("toObject", {
+  transform: (_, ret) => {
+    delete ret._id;
+    delete ret.__v;
+    return ret;
+  },
+});
+
 export default mongoose.model<CategoriaMovimento>(
   "CategoriaMovimenti",
   CategorieMovimentiSchema,
