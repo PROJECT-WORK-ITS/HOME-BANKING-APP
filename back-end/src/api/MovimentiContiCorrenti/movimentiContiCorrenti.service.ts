@@ -6,24 +6,28 @@ class MovimentiContiCorrentiService {
   public async createMovimento(
     data: MovimentiContiCorrenti
   ): Promise<MovimentiContiCorrenti> {
-    const movimento = new MovimentiContiCorrenteModel(data);
-    await movimento.save();
-
     const categoria = await CategorieMovimentiModel.findById(
-      movimento.categoriaMovimentoId
+      data.categoriaMovimentoId
     );
     if (!categoria) {
       throw new Error("Categoria di movimento non trovata");
     }
+
+    let nuovoSaldo = data.saldo;
+
     if (categoria.tipologia === "Entrata") {
-      contoCorrente.saldo += movimento.importo;
+      nuovoSaldo += data.importo;
     } else if (categoria.tipologia === "Uscita") {
-      contoCorrente.saldo -= movimento.importo;
-    } else {
+      nuovoSaldo -= data.importo;
       throw new Error("Tipologia di movimento non valida");
     }
 
-    await contoCorrente.save();
+    const movimento = new MovimentiContiCorrenteModel({
+      ...data,
+      saldo: nuovoSaldo,
+    });
+
+    await movimento.save();
 
     return movimento;
   }
