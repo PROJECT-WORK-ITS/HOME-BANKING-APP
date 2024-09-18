@@ -1,4 +1,5 @@
-import { IsEmail, IsString, IsUrl, Matches, MinLength } from "class-validator";
+import { Type } from "class-transformer";
+import { IsDate, IsEmail, IsMongoId, IsString, IsUrl, Matches, MinLength } from "class-validator";
 
 export class AddUserDTO {
   @IsString()
@@ -7,8 +8,16 @@ export class AddUserDTO {
   @IsString()
   firstName: string;
 
-  @IsString()
-  username: string;
+  @Type(() => Date)
+  @IsDate()
+  openingDate: Date;
+
+  @IsMongoId()
+  @Type(() => String)
+  IBAN: string;
+
+  @IsEmail()
+  email: string;
 
   @MinLength(8)
   @Matches(
@@ -18,6 +27,7 @@ export class AddUserDTO {
     }
   )
   password: string;
+
 }
 
 
