@@ -1,4 +1,4 @@
-import { User } from "../../../api/user/user.entity";
+import { contiCorrente } from "../../../api/ContiCorrenti/contiCorrente.entity";
 
 export interface UserIdentity {
     id: string;
@@ -7,5 +7,5 @@ export interface UserIdentity {
         username: string;
         hashedPassword: string;
     };
-    user: User;
+    contoCorrente: contiCorrente;
 }
