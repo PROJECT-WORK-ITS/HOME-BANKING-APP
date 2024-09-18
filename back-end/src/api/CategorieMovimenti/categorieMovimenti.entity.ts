@@ -1,6 +1,6 @@
-export interface CategoriaMovimento {
-    _id?: string;
-    nomeCategoria: string;
-    tipologia: 'Entrata' | 'Uscita'; 
-  }
-  
+import { Document } from "mongoose";
+
+export interface CategoriaMovimento extends Document {
+  nomeCategoria: string;
+  tipologia: string;
+}
