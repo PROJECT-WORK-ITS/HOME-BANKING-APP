@@ -7,9 +7,6 @@ export class AddUserDTO {
   @IsString()
   firstName: string;
 
-  @IsUrl()
-  picture: string;
-
   @IsString()
   username: string;
 
