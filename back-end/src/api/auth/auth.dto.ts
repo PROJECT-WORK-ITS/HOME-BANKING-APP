@@ -12,7 +12,7 @@ export class AddUserDTO {
   @IsDate()
   openingDate: Date;
 
-  @IsMongoId()
+  @IsString()
   @Type(() => String)
   IBAN: string;
 
