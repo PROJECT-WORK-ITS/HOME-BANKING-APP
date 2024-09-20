@@ -9,8 +9,8 @@ const MovimentiContiCorrentiSchema: Schema = new Schema({
   },
   data: { type: Date, require: true },
   importo: { type: Number, require: true },
-  saldo: { type: Number, require: true },
-  descrizione: { type: Number, require: true },
+  saldo: { type: Number },
+  descrizione: { type: String, require: true },
 });
 
 MovimentiContiCorrentiSchema.set("toJSON", {

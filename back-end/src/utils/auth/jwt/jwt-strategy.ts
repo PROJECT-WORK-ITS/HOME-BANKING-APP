@@ -1,6 +1,6 @@
 import passport from "passport";
 import { ExtractJwt, Strategy as JwtStrategy } from "passport-jwt";
-import { User as UserModel } from "../../../api/user/user.model";
+import { ContoCorrente as ContoCorrenteModel } from "../../../api/ContiCorrenti/contiCorrenti.model";
 
 export const JWT_SECRET = 'my_jwt_secret';
 
@@ -11,7 +11,7 @@ passport.use(
   },
   async (token, done) => {
     try {
-      const user = await UserModel.findById(token.id);
+      const user = await ContoCorrenteModel.findById(token.id);
       if (user) {
         return done(null, user.toObject());
       } else {

@@ -8,7 +8,7 @@ import * as bcrypt from 'bcrypt';
 export class ContiCorrentiService {
 
   async add(contoCorrente: ContiCorrenti, credentials: {email: string, password: string}): Promise<ContiCorrenti> {
-    const existingIdentity = await UserIdentityModel.findOne({'credentials.username': credentials.email});
+    const existingIdentity = await UserIdentityModel.findOne({'credentials.email': credentials.email});
     if (existingIdentity) {
       throw new UserExistsError();
     }

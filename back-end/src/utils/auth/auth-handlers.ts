@@ -1,10 +1,11 @@
 import './local/local-strategy';
 import './jwt/jwt-strategy';
-import { User as iUser } from '../../api/user/user.entity';
+import { ContiCorrenti as iContiCorrenti } from '../../api/ContiCorrenti/contiCorrenti.entity';
+
 
 declare global {
   namespace Express {
-    interface User extends iUser {
+    interface User extends iContiCorrenti {
     }
   }
 }
