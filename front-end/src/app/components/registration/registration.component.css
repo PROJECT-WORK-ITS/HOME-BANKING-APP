@@ -1,0 +1,18 @@
+.login-div{
+    background-color: aliceblue;
+    border-radius: 20px!important;
+}
+
+.title{
+    font-size: 25px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.buttons{
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    gap: 3;
+}
+
