@@ -2,6 +2,7 @@ import passport from "passport";
 import { Strategy as LocalStrategy } from "passport-local";
 import { UserIdentity } from "./user-identity.model";
 import * as bcrypt from 'bcrypt';
+import { ContoCorrente } from "../../../api/ContiCorrenti/contiCorrenti.model";
 
 passport.use(
   new LocalStrategy({
@@ -16,7 +17,10 @@ passport.use(
         }
         const match = await bcrypt.compare(password, identity.credentials.hashedPassword);
         // vado a convertirlo in oggetto semplice per eliminare i metodi di mongoose
+        
         const plainUser = identity.toObject().contoCorrente;
+        
+        
         if (match) {
           return done(null, plainUser);
         }

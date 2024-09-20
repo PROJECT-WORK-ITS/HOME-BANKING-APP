@@ -14,18 +14,18 @@ export class ContiCorrentiService {
     }
     const hashedPassword = await bcrypt.hash(credentials.password, 10);
 
-    const newUser = await ContoCorrenteModel.create(contoCorrente);
+    const newConto = await ContoCorrenteModel.create(contoCorrente);
 
     await UserIdentityModel.create({
       provider: 'local',
-      user: newUser._id,
+      contoCorrente: newConto._id,
       credentials: {
         email: credentials.email,
         hashedPassword
       }
     })
 
-    return newUser;
+    return newConto;
   }
 
 }
