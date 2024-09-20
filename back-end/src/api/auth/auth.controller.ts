@@ -44,6 +44,7 @@ export const add = async (
   try {
     const userData = omit(req.body, 'email', 'password');
     const credentials = pick(req.body, 'email', 'password');
+
     const newUser = await contiCorrentiService.add(userData, credentials);
     res.send(newUser);
     
