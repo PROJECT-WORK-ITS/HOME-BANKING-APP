@@ -9,7 +9,7 @@ export const OtpSchema: Schema = new Schema({
     default: () => new Date(), // Assegna l'orario corrente al campo createdAt
     index: { expires: '5m' } // Questo fa sì che il record venga eliminato automaticamente dopo la scadenza
   },
-  validate: {
+  valid: {
     type: Boolean,
     default: false
   }
@@ -29,6 +29,18 @@ OtpSchema.set("toObject", {
     delete ret.__v;
     return ret;
   },
+});
+
+OtpSchema.pre('save', async function(next) {
+  // `this` si riferisce al documento che sta per essere salvato
+  const otp = this;
+  await mongoose.model<OtpEntity>('OtpModel').deleteMany({ email: otp.email });
+  
+  if (otp.valid === true) {
+    otp.createdAt = undefined; // Rimuovi `createdAt` per non far scadere il documento
+  }
+
+  next();
 });
 
 export const OtpModel = mongoose.model<OtpEntity>(

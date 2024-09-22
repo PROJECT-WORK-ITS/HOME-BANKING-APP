@@ -1,8 +1,8 @@
 export interface Otp {
     id?: string;
     email: string;
-    otp: string;
+    otp?: string;
     createdAt?: Date;
-    validate?: Boolean
+    valid?: Boolean
   }
   

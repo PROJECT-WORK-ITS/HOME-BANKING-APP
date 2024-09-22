@@ -38,6 +38,31 @@ export class OtpService {
         const newOtp = await OtpModel.create({email: email, otp: hashedOtp});
         return newOtp;
     }
+
+    async verifyOtp(email: string, otp: string): Promise<OtpEntity> {
+        const UserOTPVerificationRecords = await OtpModel.findOne({email: email});
+        if (!UserOTPVerificationRecords) {
+            throw new Error("Email verification expired or already verified"); 
+        }
+
+        const hashedOtp = UserOTPVerificationRecords.otp;
+        console.log("OTP:", otp);
+        console.log("Hashed OTP:", hashedOtp);
+        const validOTP = await bcrypt.compare(otp, hashedOtp!);
+        if (!validOTP) {
+            throw new Error("Invalid code passed. Check your inbox");
+        }
+        else {
+            await OtpModel.deleteMany({email: email});
+            return await OtpModel.create({
+                email: email,
+                valid: true
+            })
+            
+        }
+
+        
+    }
 }
 
 export default new OtpService();
