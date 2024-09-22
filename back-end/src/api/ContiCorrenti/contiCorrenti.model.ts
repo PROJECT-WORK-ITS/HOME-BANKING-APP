@@ -4,7 +4,10 @@ import { ContiCorrenti } from "./contiCorrenti.entity";
 export const ContiCorrentiSchema: Schema = new Schema({
   lastName: String,
   firstName: String,
-  openingDate: Date,
+  openingDate:{
+    type: Date,
+    default: () => new Date()
+  },
   IBAN: String,
 });
 

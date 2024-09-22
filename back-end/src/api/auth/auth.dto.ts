@@ -1,5 +1,5 @@
 import { Type } from "class-transformer";
-import { IsDate, IsEmail, IsMongoId, IsString, IsUrl, Matches, MinLength } from "class-validator";
+import { IsDate, IsEmail, IsMongoId, IsOptional, IsString, IsUrl, Matches, MinLength } from "class-validator";
 
 export class AddUserDTO {
   @IsString()
@@ -10,10 +10,12 @@ export class AddUserDTO {
 
   @Type(() => Date)
   @IsDate()
+  @IsOptional()
   openingDate: Date;
 
   @IsString()
   @Type(() => String)
+  @IsOptional()
   IBAN: string;
 
   @IsEmail()

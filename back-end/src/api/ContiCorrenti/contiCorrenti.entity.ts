@@ -3,5 +3,5 @@ export interface ContiCorrenti {
   lastName: string;
   firstName: string;
   openingDate: Date;
-  IBAN: string;
+  IBAN?: string;
 }
