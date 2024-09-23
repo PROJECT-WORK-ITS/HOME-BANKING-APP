@@ -1,0 +1,18 @@
+.title{
+    text-align: center;
+}
+
+.filters-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    .filter{
+        text-align: center;
+        vertical-align: middle;
+        height: 5vh;
+        background-color: whitesmoke;
+        border-radius: 15px;
+        min-width: 60vh;
+        cursor: pointer;
+    }
+}
