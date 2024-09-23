@@ -3,8 +3,8 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-ricarica',
   templateUrl: './ricarica.component.html',
-  styleUrls: ['./ricarica.component.css']  // Corretto qui
+  styleUrls: ['./ricarica.component.css'] 
 })
-export class ricaricaComponent {
+export class RicaricaComponent {
 
 }

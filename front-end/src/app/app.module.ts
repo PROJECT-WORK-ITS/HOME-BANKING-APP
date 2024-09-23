@@ -9,6 +9,8 @@ import { HomeComponent } from './components/home/home.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { DetailsComponent } from './components/details/details.component';
+import { SearchComponent } from './components/search/search.component';
+import { RicaricaComponent } from './components/ricarica/ricarica.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { DetailsComponent } from './components/details/details.component';
     LoginComponent,
     HomeComponent,
     NavBarComponent,
-    DetailsComponent
+    DetailsComponent,
+    SearchComponent,
+    RicaricaComponent
   ],
   imports: [
     BrowserModule,
