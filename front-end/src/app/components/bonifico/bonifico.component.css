@@ -1,0 +1,104 @@
+/* Impostazioni globali */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: none;
+}
+
+/* Contenitore principale */
+.container {
+  margin-top: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+/* Wrapper unificato per form e icona */
+.content-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: whitesmoke; /* Sfondo bianco smoke */
+  padding: 30px;
+  border-radius: 15px; /* Arrotonda i bordi del riquadro unificato */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Leggera ombra */
+  width: 80%; /* Allarga il riquadro bianco a occupare l'80% dello schermo */
+  max-width: 1400px; /* Aumenta anche la larghezza massima */
+}
+
+/* Sezione form */
+.form-section {
+  flex: 1;
+}
+
+/* Sezione icona */
+.icon-section {
+  flex: 0.5;
+  display: flex;
+  justify-content: center;
+  margin-left: 50px; /* Sposta leggermente l'icona a destra */
+}
+
+/* Stile del form */
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* Etichette del form */
+label {
+  margin-bottom: 10px;
+  font-size: 1.2em;
+  color: black; /* Testo nero all'interno del riquadro */
+}
+
+/* Campi di input */
+input[type="text"],
+input[type="number"] {
+  width: 100%;
+  max-width: 550px; /* Aumentata la larghezza massima dei box input */
+  padding: 15px; /* Aumenta leggermente il padding */
+  margin-bottom: 20px;
+  border-radius: 15px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background-color: white;
+  color: black;
+  font-size: 1.2em; /* Aumenta leggermente la dimensione del testo */
+}
+
+input:focus {
+  border: 2px solid #00ffb0;
+  outline: none;
+}
+
+/* Stile del pulsante */
+button {
+  width: 170px; /* Aumentato leggermente la larghezza del pulsante */
+  padding: 12px 18px;
+  margin-top: 10px;
+  background-color: #5bc0de; /* Azzurro moderno */
+  color: #fff; /* Testo bianco per contrasto */
+  border: none;
+  border-radius: 25px;
+  font-size: 1.3em;
+  cursor: pointer;
+  transition: background-color 0.3s; /* Transizione fluida */
+}
+
+button:hover {
+  background-color: #3aa6d2; /* Blu più scuro per l'hover */
+}
+
+/* Stile dell'icona */
+.icon-section img {
+  width: 450px;
+  height: auto;
+}
