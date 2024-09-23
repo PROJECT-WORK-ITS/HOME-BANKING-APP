@@ -3,10 +3,24 @@ a{
     color: black;
 }
 
+a:hover {
+    color: rgba(9, 77, 179, 0.8);
+    font-weight: bolder;
+    cursor: pointer;
+}
+
 .container-fluid{
     justify-content: end;
 }
 
 nav{
     background-color: whitesmoke!important;
+}
+
+.logo{
+    width: 53%;
+    img{
+        width: 150px;
+    }
+    justify-content: left;
 }
