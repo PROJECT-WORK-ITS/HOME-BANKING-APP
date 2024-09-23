@@ -5,7 +5,7 @@ import contiCorrentiService from "./contiCorrenti.service";
 import { updateIBAN } from "./contiCorrenti.dto";
 
 
-export const checkCompleted = async (req: TypedRequest<updateIBAN>, res: Response, next: NextFunction) => {
+export const updIBAN = async (req: TypedRequest<updateIBAN>, res: Response, next: NextFunction) => {
     try {
         const { id, IBAN } = req.body;
         

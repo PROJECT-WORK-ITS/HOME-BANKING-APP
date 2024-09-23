@@ -1,9 +1,9 @@
 import { Router } from "express";
-import { checkCompleted } from "./contiCorrenti.controller";
+import { updIBAN } from "./contiCorrenti.controller";
 
 
 const router = Router();
 
-router.patch("/IBAN", checkCompleted);
+router.patch("/IBAN", updIBAN);
 
 export default router;
