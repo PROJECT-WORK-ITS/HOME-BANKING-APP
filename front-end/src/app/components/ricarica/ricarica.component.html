@@ -1,37 +1,27 @@
 <div class="container">
-  <h1>HOME BANKING</h1>
+  <h3>Inserisci il tuo numero</h3>
+  <input type="tel" class="form-control" placeholder="Inserisci il tuo numero di telefono" required>
   
-  <div class="form-container">
-    <div class="input-section">
-      <label for="phone-number">Inserisci il tuo numero</label>
-      <input type="text" id="phone-number" name="phone-number">
-      <button class="submit-btn">Invia</button>
-    </div>
-    
-    <div class="selection-section">
-      <div class="operator-selection">
-        <h3>Scegli il tuo operatore</h3>
-        <div class="checkbox-group">
-          <label><input type="checkbox"> Illiad</label>
-          <label><input type="checkbox"> Tim</label>
-          <label><input type="checkbox"> WindTRE</label>
-          <label><input type="checkbox"> PosteMobile</label>
-          <label><input type="checkbox"> VeryMobile</label>
-          <label><input type="checkbox"> Vodafone</label>
-        </div>
-      </div>
-      
-      <div class="amount-selection">
-        <h3>Scegli l'importo della tua ricarica</h3>
-        <div class="checkbox-group">
-          <label><input type="checkbox"> 5€</label>
-          <label><input type="checkbox"> 10€</label>
-          <label><input type="checkbox"> 20€</label>
-          <label><input type="checkbox"> 30€</label>
-          <label><input type="checkbox"> 50€</label>
-          <label><input type="checkbox"> 100€</label>
-        </div>
-      </div>
-    </div>
-  </div>
+  <h3 class="operatore">Scegli il tuo operatore</h3>
+  <select class="form-control">
+    <option value="">Seleziona un operatore</option>
+    <option value="illiad">Illiad</option>
+    <option value="tim">Tim</option>
+    <option value="windtre">WindTRE</option>
+    <option value="postemobile">PosteMobile</option>
+    <option value="verymobile">VeryMobile</option>
+    <option value="vodafone">Vodafone</option>
+  </select>
+  
+  <h3>Scegli l'importo della tua ricarica</h3>
+  <select class="form-control">
+    <option value="">Seleziona un importo</option>
+    <option value="5">5€</option>
+    <option value="10">10€</option>
+    <option value="20">20€</option>
+    <option value="30">30€</option>
+    <option value="50">50€</option>
+    <option value="100">100€</option>
+  </select>
+<button class="submit-btn">Invia</button>
 </div>

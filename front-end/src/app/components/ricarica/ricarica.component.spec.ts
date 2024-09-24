@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ricaricaComponent } from './ricarica.component';
+import { RicaricaComponent } from './ricarica.component';
 
 describe('ricaricaComponent', () => {
-  let component: ricaricaComponent;
-  let fixture: ComponentFixture<ricaricaComponent>;
+  let component: RicaricaComponent;
+  let fixture: ComponentFixture<RicaricaComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ricaricaComponent]
+      declarations: [RicaricaComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(ricaricaComponent);
+    fixture = TestBed.createComponent(RicaricaComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
