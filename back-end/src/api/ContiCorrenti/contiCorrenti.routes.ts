@@ -1,9 +1,10 @@
 import { Router } from "express";
-import { updIBAN } from "./contiCorrenti.controller";
+import { me } from "./contiCorrenti.controller";
+import { isAuthenticated } from "../../utils/auth/authenticated.middleware";
 
 
 const router = Router();
 
-router.patch("/IBAN", updIBAN);
+router.patch("/me", isAuthenticated, me);
 
 export default router;
