@@ -2,61 +2,155 @@
     <div class="row">
       <div class="col col-lg-4"></div>
         <div class="col col-lg-4 col-md-12 border rounded p-4 login-div">
-            <form *ngIf="tab === 1">
+            <form [formGroup]="signUpForm" (ngSubmit)="registerSubmit()" *ngIf="tab === 1">
                 <div class="title">
                     <strong>Registrazione</strong>
                 </div>
                 <div class="form-outline mb-2">
                     <label class="form-label">Email</label>
-                    <input type="email" class="form-control" formControlName="username" />
+                    <div class="input-group">
+                        <input
+                            type="email"
+                            class="form-control"
+                            formControlName="email"
+                            placeholder="Inserisci la tua email"
+                            [class.is-invalid]="signUpForm.get('email')?.invalid
+                            && (signUpForm.get('email')?.dirty
+                            || signUpForm.get('email')?.touched
+                            || isSubmitted)">
+                        <div class="invalid-tooltip">
+                            {{ signUpForm.get('email')?.invalid ? "Email obbligatoria" : "adsadsda" }}
+                        </div>
+                    </div>
                 </div>
         
                 <div class="form-outline mb-2">
                     <label class="form-label">Password</label>
-                    <input type="password" class="form-control" formControlName="password" />
+                    <div class="input-group">
+                        <input
+                            type="password"
+                            class="form-control"
+                            formControlName="password"
+                            placeholder="Inserisci la password"
+                            [class.is-invalid]="signUpForm.get('password')?.invalid
+                            && (signUpForm.get('password')?.dirty
+                            || signUpForm.get('password')?.touched
+                            || isSubmitted)">
+                        <div class="invalid-tooltip">
+                            {{ signUpForm.get('password')?.invalid ? "Password obbligatoria" : undefined }}
+                        </div>
+                    </div>
                 </div>
 
                 <div class="form-outline mb-2">
                     <label class="form-label">Conferma Password</label>
-                    <input type="password" class="form-control" formControlName="confirm-password" />
+                    <div class="input-group">
+                        <input
+                            type="password"
+                            class="form-control"
+                            formControlName="confirmpassword"
+                            placeholder="Inserisci la password"
+                            [class.is-invalid]="signUpForm.get('confirmpassword')?.invalid
+                            && (signUpForm.get('confirmpassword')?.dirty
+                            || signUpForm.get('confirmpassword')?.touched
+                            || isSubmitted)">
+                        <div class="invalid-tooltip">
+                            {{ signUpForm.get('confirmpassword')?.invalid ? "Conferma password obbligatoria" : undefined }}
+                        </div>
+                    </div>
                 </div>
 
                 <div class="form-outline mb-2">
                     <label class="form-label">Nome</label>
-                    <input type="name" class="form-control" formControlName="name" />
+                    <div class="input-group">
+                        <input
+                            type="name"
+                            class="form-control"
+                            formControlName="name"
+                            placeholder="Inserisci il tuo nome"
+                            [class.is-invalid]="signUpForm.get('name')?.invalid
+                            && (signUpForm.get('name')?.dirty
+                            || signUpForm.get('name')?.touched
+                            || isSubmitted)">
+                        <div class="invalid-tooltip">
+                            {{ signUpForm.get('name')?.invalid ? "Nome obbligatorio" : undefined }}
+                        </div>
+                    </div>
                 </div>
 
                 <div class="form-outline mb-4">
                     <label class="form-label">Cognome</label>
-                    <input type="surname" class="form-control" formControlName="surname" />
+                    <div class="input-group">
+                        <input 
+                            type="surname"
+                            class="form-control"
+                            formControlName="surname"
+                            placeholder="Inserisci il tuo cognome"
+                            [class.is-invalid]="signUpForm.get('surname')?.invalid
+                            && (signUpForm.get('surname')?.dirty
+                            || signUpForm.get('surname')?.touched
+                            || isSubmitted)">
+                        <div class="invalid-tooltip">
+                            {{ signUpForm.get('surname')?.invalid ? "Cognome obbligatorio" : undefined }}
+                        </div>
+                    </div>
                 </div>
-        
+                
+                <div class="text-danger mb-3" *ngIf="registerError">
+                    {{ registerError }}
+                </div>
+
                 <div class="text-center">
-                    <button type="button" (click)="nextTab(1)" class="btn btn-primary btn-block mb-4">Avanti</button>
+                    <button type="submit" class="btn btn-primary btn-block mb-4">Avanti</button>
                 </div>
             </form>
 
-            <form *ngIf="tab === 2">
+            <form [formGroup]="otpForm" (ngSubmit)="otpSubmit()" *ngIf="tab === 2">
                 <div class="title">
                     <strong>Registrazione</strong>
                 </div>
                 <div class="form-outline mb-4">
                     <label class="form-label">Inserisci codice di conferma</label>
-                    <input type="code" class="form-control" formControlName="name" />
+                    <input
+                    type="number"
+                    class="form-control"
+                    formControlName="otp"
+                    placeholder="000000"
+                    [class.is-invalid]="otpForm.get('otp')?.invalid
+                    && (otpForm.get('otp')?.dirty
+                    || otpForm.get('otp')?.touched
+                    || isSubmitted)">
+                </div>
+                
+                <div class="text-danger mb-3" *ngIf="otpError">
+                    {{ otpError }}
                 </div>
 
                 <div class="text-center">
                     <button type="button" (click)="nextTab(2)" class="btn btn-primary btn-block mb-4">Registrati</button>
                 </div>
+                
             </form>
 
-            <form *ngIf="tab === 3">
+            <form [formGroup]="ibanForm" (ngSubmit)="ibanSubmit()" *ngIf="tab === 3">
                 <div class="title">
                     <strong>Registrazione</strong>
                 </div>
                 <div class="form-outline mb-4">
                     <label class="form-label">Inserisci IBAN</label>
-                    <input type="iban" class="form-control" formControlName="name" />
+                    <input
+                    type="iban"
+                    class="form-control"
+                    formControlName="IBAN"
+                    [class.is-invalid]="ibanForm.get('IBAN')?.invalid
+                    && (ibanForm.get('IBAN')?.dirty
+                    || ibanForm.get('IBAN')?.touched
+                    || isSubmitted)"
+                    />
+                </div>
+
+                <div class="text-danger mb-3" *ngIf="ibanError">
+                    {{ ibanError }}
                 </div>
 
                 <div class="text-center">
