@@ -127,35 +127,9 @@
                 </div>
 
                 <div class="text-center">
-                    <button type="button" (click)="nextTab(2)" class="btn btn-primary btn-block mb-4">Registrati</button>
+                    <button type="submit" class="btn btn-primary btn-block mb-4">Registrati</button>
                 </div>
                 
-            </form>
-
-            <form [formGroup]="ibanForm" (ngSubmit)="ibanSubmit()" *ngIf="tab === 3">
-                <div class="title">
-                    <strong>Registrazione</strong>
-                </div>
-                <div class="form-outline mb-4">
-                    <label class="form-label">Inserisci IBAN</label>
-                    <input
-                    type="iban"
-                    class="form-control"
-                    formControlName="IBAN"
-                    [class.is-invalid]="ibanForm.get('IBAN')?.invalid
-                    && (ibanForm.get('IBAN')?.dirty
-                    || ibanForm.get('IBAN')?.touched
-                    || isSubmitted)"
-                    />
-                </div>
-
-                <div class="text-danger mb-3" *ngIf="ibanError">
-                    {{ ibanError }}
-                </div>
-
-                <div class="text-center">
-                    <button type="submit" *ngIf="tab === 3" class="btn btn-primary btn-block mb-4">Avanti</button>
-                </div>
             </form>
 
         </div>

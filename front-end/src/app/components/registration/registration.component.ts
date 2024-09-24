@@ -12,10 +12,9 @@ import { AuthService } from '../../services/auth.service';
 })
 export class RegistrationComponent {
 
-  public tab: number = 2;
+  public tab: number = 1;
   registerError: string = '';
   otpError: string = '';
-  ibanError: string = '';
 
   signUpForm = this.fb.group({
     email: ['', [Validators.required, Validators.email]],
@@ -27,10 +26,6 @@ export class RegistrationComponent {
 
   otpForm = this.fb.group({
     otp: [null, [Validators.required]]
-  });
-
-  ibanForm = this.fb.group({
-    IBAN: [null, [Validators.required]]
   });
 
 
@@ -74,9 +69,12 @@ export class RegistrationComponent {
         .subscribe(contoCorrente => {
           if (contoCorrente) {
             this.registerError = "";
-            this.otpService.send(this.signUpForm.get('email')?.value!)
-            this.nextTab(1)
-            this.isSubmitted = false;
+            console.log(this.signUpForm.get('email')?.value!)
+            this.otpService.send(this.signUpForm.get('email')?.value!).subscribe( () => {
+              this.nextTab(1);
+              this.isSubmitted = false;
+            });
+            
           }
         });
           
@@ -97,23 +95,15 @@ export class RegistrationComponent {
         })
       )
       .subscribe((otp) => {
+        console.log(otp)
         if (otp.valid) {
-          this.nextTab(2);
           this.isSubmitted = false;
+          
         }
       });
 
     }
 
   }
-
-  ibanSubmit() {
-    this.isSubmitted = true;
-
-    if(this.ibanForm.valid) {
-      
-    }
-  }
-  
 
 }
