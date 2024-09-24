@@ -1,31 +1,32 @@
 <div class="main-container">
-    <div class="left-container">
-        <div class="nome">
-            Benvenuto <br> Mario Rossi
-        </div>
-        <div class="saldo">
-            <div class="top">Saldo corrente</div>
-            <div class="bottom">
-                <div>1253.34€</div>
-                <div><img src="assets/occhio.png"></div>
-            </div>
-            <div class="iban">
-                Il tuo IBAN: <br>
-                IT60 X054 2811 1010 0000 0123 456
-            </div>
-        </div>
+  <div class="left-container">
+    <div class="nome">
+      Benvenuto <br />
+      Mario Rossi
     </div>
+    <div class="saldo">
+      <div class="top">Saldo Corrente</div>
+      <div class="bottom">
+        <div>
+          <span>{{ saldo | currency : "EUR" }}</span>
+        </div>
+        <div><img src="assets/occhio.png" /></div>
+      </div>
+      <div class="iban">
+        Il tuo IBAN: <br />
+        <span>IT</span>
+      </div>
+    </div>
+  </div>
 
-    <div class="right-container">
-        <div class="movimento">
-            <img src="assets/ricarica.png">
-            <div class="details">
-                APERTURA CONTO<br>
-                <a href="/details">Visualizza dettagli</a>
-            </div>
-            <div class="prezzo">
-                0.00€
-            </div>
-        </div>
+  <div class="right-container">
+    <div class="movimento">
+      <img src="assets/ricarica.png" />
+      <div class="details">
+        APERTURA CONTO<br />
+        <a href="/details">Visualizza dettagli</a>
+      </div>
+      <div class="prezzo">0.00€</div>
     </div>
+  </div>
 </div>

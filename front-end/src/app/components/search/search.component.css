@@ -2,17 +2,105 @@
     text-align: center;
 }
 
-.filters-container{
+.select-filter{
+    margin-top: 30px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     .filter{
-        text-align: center;
-        vertical-align: middle;
-        height: 5vh;
+        min-width: 45vh;
+        background-color: rgb(221, 219, 219);
+        border-radius: 15px;
+        padding: 5px 5px 5px 5px;
+        border: 1px solid grey;
+    }
+    .filter:hover{
+        background-color:darkgray;
+    }
+    .selected{
+        background-color: rgb(175, 174, 174);
+    }
+}
+
+.bottom{
+    margin-top: 50px;
+    display: flex;
+    .filter {
+        flex: 40%;
+        .option{
+            min-height: 60vh;
+            width: 40vh;
+            background-color: whitesmoke;
+            border-radius: 15px;
+            margin-right: 10vh;
+            padding: 20px 20px 20px 20px;
+
+            h4{
+                text-align: center;
+            }
+            input{
+                margin-top: 10px;
+                border-radius: 10px;
+            }
+        }
+    }
+    .table-container {
+        flex: 60%;
         background-color: whitesmoke;
         border-radius: 15px;
-        min-width: 60vh;
-        cursor: pointer;
+        min-height: 60vh;
+        th, tr{
+            min-width: 20vh;
+            text-align: center;
+            padding: 4px 4px 4px 4px;
+        }
+        th{
+            border-bottom: 1px solid black;
+        }
+    }
+}
+
+button{
+    background-color: rgba(240, 248, 255, 0.767);
+}
+
+.saldo{
+    font-size: 20px;;
+}
+
+.dp-hidden {
+    width: 0;
+    margin: 0;
+    border: none;
+    padding: 0;
+}
+.custom-day {
+    text-align: center;
+    padding: 0.185rem 0.25rem;
+    display: inline-block;
+    height: 2rem;
+    width: 2rem;
+}
+
+.custom-day.focused {
+    background-color: #e6e6e6;
+}
+
+.custom-day.range,.custom-day:hover {
+    background-color: rgb(2, 117, 216);
+    color: white;
+}
+
+.custom-day.faded {
+    background-color: rgba(2, 117, 216, 0.5);
+}
+
+.button-calendar{
+    border: 0;
+    img{
+        margin-top: 10px;
+        height: 30px;
+        border: 1px solid rgb(209, 207, 207);
+        border-radius: 15px;
     }
 }
