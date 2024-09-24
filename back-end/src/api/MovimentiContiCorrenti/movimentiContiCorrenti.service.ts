@@ -1,6 +1,7 @@
 import MovimentiContiCorrenteModel from "./movimentiContiCorrenti.model";
 import { ContoCorrente } from "../ContiCorrenti/contiCorrenti.model";
 import { MovimentiContiCorrenti } from "./movimentiContiCorrenti.entity";
+import movimentiContiCorrentiModel from "./movimentiContiCorrenti.model";
 
 export class MovimentiContiCorrentiService {
   // Funzione per ottenere il saldo attuale basato sui movimenti
@@ -136,6 +137,22 @@ export class MovimentiContiCorrentiService {
   public async getUserSaldo(contoCorrenteId: string): Promise<number> {
     const saldoContoCorrente = await this.getSaldoCorrente(contoCorrenteId);
     return saldoContoCorrente;
+  }
+
+  public async getUltimoMovimento(
+    contoCorrenteId: string
+  ): Promise<MovimentiContiCorrenti> {
+    const ultimoMovimento = await movimentiContiCorrentiModel
+      .findOne({
+        contoCorrenteId,
+      })
+      .sort({ data: -1 });
+
+    if (!ultimoMovimento) {
+      throw new Error("Nessun movimento trovato per questo conto corrente");
+    }
+
+    return ultimoMovimento;
   }
 }
 

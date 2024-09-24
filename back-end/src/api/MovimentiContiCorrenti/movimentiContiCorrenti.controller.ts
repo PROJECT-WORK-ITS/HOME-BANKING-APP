@@ -74,13 +74,31 @@ class MovimentiContiCorrentiController {
     res: Response
   ): Promise<Response> {
     try {
-      const { contoCorrenteId } = req.params;
+      const contoCorrenteId = req.params.contoCorrenteId;
+      res.set("Cache-Control", "no-store");
+
       const saldo = await MovimentiContiCorrentiService.getUserSaldo(
         contoCorrenteId
       );
       res.json(saldo);
+      console.log(saldo);
     } catch (error) {
       console.error(error);
+      res.status(500).json({ error: error as Error });
+    }
+    return res;
+  }
+
+  public async getUltimoMovimento(
+    req: Request,
+    res: Response
+  ): Promise<Response> {
+    try {
+      const contoCorrenteId = req.params.contoCorrenteId;
+      const ultimoMovimento =
+        await MovimentiContiCorrentiService.getUltimoMovimento(contoCorrenteId);
+      res.json(ultimoMovimento);
+    } catch (error) {
       res.status(500).json({ error: error as Error });
     }
     return res;
