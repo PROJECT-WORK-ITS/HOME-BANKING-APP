@@ -11,6 +11,7 @@ import { DetailsComponent } from './components/details/details.component';
 import { SearchComponent } from './components/search/search.component';
 import { RicaricaComponent } from './components/ricarica/ricarica.component';
 import { BonificoComponent } from './components/bonifico/bonifico.component';
+import { ProfiloComponent } from './components/profilo/profilo.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { BonificoComponent } from './components/bonifico/bonifico.component';
     DetailsComponent,
     SearchComponent,
     RicaricaComponent,
-    BonificoComponent
+    BonificoComponent,
+    ProfiloComponent
   ],
   imports: [
     BrowserModule,
