@@ -35,5 +35,55 @@ class MovimentiContiCorrentiController {
       });
     }
   }
+
+  public async getAllUSerMovimenti(
+    req: Request,
+    res: Response
+  ): Promise<Response> {
+    try {
+      const { id } = req.params;
+      const movimenti = await MovimentiContiCorrentiService.getAllUSerMovimenti(
+        id
+      );
+      res.json(movimenti);
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: error as Error });
+    }
+    return res;
+  }
+
+  public async ricaricaTelefonica(
+    req: Request,
+    res: Response
+  ): Promise<Response> {
+    try {
+      const data: { contocorrenteId; importo; descrizione } = req.body;
+      const movimentoRicarica =
+        await MovimentiContiCorrentiService.ricaricaTelefonica(data);
+      res.json(movimentoRicarica);
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: error as Error });
+    }
+    return res;
+  }
+
+  public async getSaldoCorrente(
+    req: Request,
+    res: Response
+  ): Promise<Response> {
+    try {
+      const { contoCorrenteId } = req.params;
+      const saldo = await MovimentiContiCorrentiService.getUserSaldo(
+        contoCorrenteId
+      );
+      res.json(saldo);
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: error as Error });
+    }
+    return res;
+  }
 }
 export default new MovimentiContiCorrentiController();

@@ -1,9 +1,10 @@
 import MovimentiContiCorrenteModel from "./movimentiContiCorrenti.model";
 import { ContoCorrente } from "../ContiCorrenti/contiCorrenti.model";
+import { MovimentiContiCorrenti } from "./movimentiContiCorrenti.entity";
 
 export class MovimentiContiCorrentiService {
   // Funzione per ottenere il saldo attuale basato sui movimenti
-  async getSaldoCorrente(contoCorrenteId: string): Promise<number> {
+  private async getSaldoCorrente(contoCorrenteId: string): Promise<number> {
     // Trova il movimento più recente in base alla data
     const ultimoMovimento = await MovimentiContiCorrenteModel.findOne({
       contoCorrenteId,
@@ -22,7 +23,7 @@ export class MovimentiContiCorrentiService {
   }
 
   // Funzione per gestire il bonifico
-  async effettuaBonifico(data: {
+  public async effettuaBonifico(data: {
     ibanMittente: string;
     ibanDestinatario: string;
     importo: number;
@@ -77,6 +78,64 @@ export class MovimentiContiCorrentiService {
     await movimentoDestinatario.save();
 
     return { success: true, message: "Bonifico eseguito con successo" };
+  }
+
+  public async ricaricaTelefonica(data: {
+    contocorrenteId: string;
+    importo: number;
+    descrizione: string;
+  }) {
+    if (data.importo <= 0) {
+      throw new Error("L'importo deve essere maggiore di zero");
+    }
+
+    // Recupera il saldo corrente del conto
+    const saldoCorrente = await this.getSaldoCorrente(data.contocorrenteId);
+    console.log(`Saldo corrente prima della ricarica: ${saldoCorrente}`);
+
+    // Controlla se ci sono fondi sufficienti
+    if (saldoCorrente < data.importo) {
+      throw new Error("Fondi insufficienti per effettuare la ricarica");
+    }
+
+    // Calcola il nuovo saldo
+    const nuovoSaldo = saldoCorrente - data.importo;
+
+    // Crea il movimento per la ricarica telefonica
+    const movimento = new MovimentiContiCorrenteModel({
+      contoCorrenteId: data.contocorrenteId,
+      categoriaMovimentoId: "66eaa4a3ef2937be4c47a3fb", // Assumi che tu abbia una categoria per le ricariche
+      importo: data.importo,
+      saldo: nuovoSaldo,
+      descrizione: "Rcarica Telefonica",
+      // La data viene impostata automaticamente nel modello
+    });
+
+    // Salva il movimento
+    await movimento.save();
+
+    // Aggiorna il saldo del conto corrente se necessario
+    await ContoCorrente.findByIdAndUpdate(data.contocorrenteId, {
+      saldo: nuovoSaldo,
+    });
+
+    return movimento;
+  }
+
+  public async getAllUSerMovimenti(
+    contoCorrenteId: string
+  ): Promise<MovimentiContiCorrenti[]> {
+    // Recupera i movimenti per il conto corrente specificato
+    const movimenti = await MovimentiContiCorrenteModel.find({
+      contoCorrenteId,
+    });
+    // Restituisce i movimenti trovati
+    return movimenti;
+  }
+
+  public async getUserSaldo(contoCorrenteId: string): Promise<number> {
+    const saldoContoCorrente = await this.getSaldoCorrente(contoCorrenteId);
+    return saldoContoCorrente;
   }
 }
 
