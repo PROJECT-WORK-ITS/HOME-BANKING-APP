@@ -1,18 +1,27 @@
-.login-div{
-    background-color: aliceblue;
-    border-radius: 20px!important;
+.dc {
+  background-image: url(../../../../Screenshot\ 2024-09-24\ 152343.png);
+  height: 500px;
+  width: 900px;
+  margin-left: 500px;
+  position: absolute;
+  border-radius: 25px;
 }
 
-.title{
-    font-size: 25px;
-    text-align: center;
-    margin-bottom: 10px;
+.login-div {
+  background-color: aliceblue;
+  border-radius: 20px !important;
 }
 
-.container{
-    margin-top: 100px!important;
+.title {
+  font-size: 25px;
+  text-align: center;
+  margin-bottom: 10px;
 }
 
-.text-center{ 
-    margin-top: 40px;
+.container {
+  margin-top: 100px !important;
+}
+
+.text-center {
+  margin-top: 40px;
 }
