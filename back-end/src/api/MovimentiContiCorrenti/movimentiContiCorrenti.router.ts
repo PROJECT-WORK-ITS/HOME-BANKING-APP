@@ -3,6 +3,6 @@ import MovimentiContiCorrentiController from "./movimentiContiCorrenti.controlle
 
 const router = Router();
 
-router.post("/", MovimentiContiCorrentiController.createMovimento);
+router.post("/bonifico", MovimentiContiCorrentiController.effettuaBonifico);
 
 export default router;

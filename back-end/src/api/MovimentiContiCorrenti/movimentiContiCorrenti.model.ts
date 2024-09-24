@@ -7,7 +7,7 @@ const MovimentiContiCorrentiSchema: Schema = new Schema({
     type: Schema.Types.ObjectId,
     ref: "CategorieMovimenti",
   },
-  data: { type: Date, require: true },
+  data: { type: Date, default: new Date(), require: true },
   importo: { type: Number, require: true },
   saldo: { type: Number },
   descrizione: { type: String, require: true },

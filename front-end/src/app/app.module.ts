@@ -11,7 +11,8 @@ import { DetailsComponent } from './components/details/details.component';
 import { SearchComponent } from './components/search/search.component';
 import { RicaricaComponent } from './components/ricarica/ricarica.component';
 import { BonificoComponent } from './components/bonifico/bonifico.component';
-
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,14 +23,16 @@ import { BonificoComponent } from './components/bonifico/bonifico.component';
     DetailsComponent,
     SearchComponent,
     RicaricaComponent,
-    BonificoComponent
+    BonificoComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule,
+    ReactiveFormsModule,
+    HttpClientModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
