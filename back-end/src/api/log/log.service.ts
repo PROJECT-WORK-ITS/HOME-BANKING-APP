@@ -3,8 +3,8 @@ import Log from './log.model';
 // Classe che gestisce la logica di business per i log
 class LogService {
   // Metodo per creare un nuovo log
-  async createLog(ipAddress: string, success: boolean) {
-    const log = new Log({ ipAddress, success });
+  async createLog(ipAddress: string, operationType: string, success: boolean) {
+    const log = new Log({ ipAddress, operationType, success });
     return await log.save();
   }
 

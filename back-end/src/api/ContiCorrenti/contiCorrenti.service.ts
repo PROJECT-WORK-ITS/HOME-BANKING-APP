@@ -5,11 +5,13 @@ import { UserExistsError } from "../../errors/user-exists";
 import * as bcrypt from 'bcrypt';
 import { OtpModel } from "../Otp/otp.model";
 import { NotFoundError } from "../../errors/not-found";
+const { faker } = require('@faker-js/faker');
+
 
 
 export class ContiCorrentiService {
 
-  async add(contoCorrente: ContiCorrenti, credentials: {email: string, password: string}): Promise<ContiCorrenti> {
+  async add(contoCorrente: ContiCorrenti, credentials: {email: string, password: string}): Promise<String> {
     const existingIdentity = await UserIdentityModel.findOne({'credentials.email': credentials.email});
     if (existingIdentity) {
       throw new UserExistsError();
@@ -22,8 +24,9 @@ export class ContiCorrentiService {
 
     const hashedPassword = await bcrypt.hash(credentials.password, 10);
 
-    const newConto = await ContoCorrenteModel.create(contoCorrente);
-
+    console.log({...contoCorrente, IBAN: this.updIBAN()});
+    //const newConto = await ContoCorrenteModel.create({...contoCorrente, IBAN: this.updIBAN()});
+/*
     await UserIdentityModel.create({
       provider: 'local',
       contoCorrente: newConto._id,
@@ -32,29 +35,26 @@ export class ContiCorrentiService {
         hashedPassword
       }
     })
+      */
 
-    return newConto;
+    return "newConto";
   }
 
-  async updIBAN(id: string, IBAN: string): Promise<ContiCorrenti> {
+  updIBAN(): string {
       
-      const existing = await ContoCorrente.findOne({_id: id});
-      if (!existing) {
-        throw new NotFoundError();
-      }
-      
-      const filter = { _id: id };
-      const update = { IBAN: IBAN };
+    const countryCode = faker.location.countryCode(); // Codice paese a 2 lettere (es: IT, DE, FR)
+    const checkDigits = faker.number.int({ min: 10, max: 99 }).toString(); // Due cifre di controllo
+    const bankCode = faker.string.numeric(5); // Codice banca (5 cifre)
+    const branchCode = faker.string.numeric(5); // Codice filiale (5 cifre)
+    const accountNumber = faker.string.numeric(12); // Numero di conto (12 cifre)
   
-      const updConto = await ContoCorrente.findOneAndUpdate(filter, update, { new: true });
-      
-      return updConto!;
-
+    // Componiamo l'IBAN
+    const iban = `${countryCode}${checkDigits}${bankCode}${branchCode}${accountNumber}`;
+  
+    return iban;
+    
   }
 
 }
-
-
-
 
 export default new ContiCorrentiService();
