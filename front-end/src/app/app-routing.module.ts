@@ -6,6 +6,7 @@ import { HomeComponent } from './components/home/home.component';
 import { DetailsComponent } from './components/details/details.component';
 import { SearchComponent } from './components/search/search.component';
 import { RicaricaComponent } from './components/ricarica/ricarica.component';
+import { BonificoComponent } from './components/bonifico/bonifico.component';
 
 const routes: Routes = [
   {
@@ -36,6 +37,10 @@ const routes: Routes = [
   {
     path: 'ricarica',
     component: RicaricaComponent
+  },
+  {
+    path: 'bonifico',
+    component: BonificoComponent
   }
   // {
   //   path: '',
