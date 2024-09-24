@@ -1,5 +1,5 @@
 .dc {
-  background-image: url(../../../../Screenshot\ 2024-09-24\ 152343.png);
+  background-image: url(../../../../Screenshot\ 2024-09-24\ 154541.png);
   height: 500px;
   width: 900px;
   margin-left: 500px;
@@ -10,6 +10,7 @@
 .login-div {
   background-color: aliceblue;
   border-radius: 20px !important;
+  margin-top: 50px;
 }
 
 .title {

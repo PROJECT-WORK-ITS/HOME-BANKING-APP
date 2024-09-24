@@ -1,16 +1,20 @@
 <nav class="navbar navbar-dark bg-primary mb-3">
   <div class="container-fluid">
     <div class="logo nav-item">
-      <img src="assets/logo.png" alt="logo">
+      <!-- <img src="assets/logo.png" alt="logo"> -->
+      <span class="dc"
+        ><span><img src="../../../../public/assets/img_logo.png" alt="" /></span
+        >BANCA ROTTA</span
+      >
     </div>
     <a class="nav-link" [routerLink]="['home']">Home</a>
     <a class="nav-link" [routerLink]="['search']">Ricerca</a>
     <a class="nav-link" [routerLink]="['ricarica']">Ricarica</a>
     <a class="nav-link" [routerLink]="['bonifico']">Bonifico</a>
-    
+
     <!-- <a class="navbar-brand" [routerLink]="['/home']">Benvenuto </a> -->
-    <ul class="navbar-nav mr-2" >
-      <li class="nav-item" >
+    <ul class="navbar-nav mr-2">
+      <li class="nav-item">
         <a class="nav-link" [routerLink]="['registration']">Profilo</a>
       </li>
     </ul>
