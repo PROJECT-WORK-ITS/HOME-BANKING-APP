@@ -1,8 +1,7 @@
 <div class="container mt-5">
-  <div class="col col-lg-5 dc"></div>
-  <div class="row">
-    <!-- <div class="col col-lg-1"></div> -->
-    <div class="col col-lg-4 col-md-12 border rounded p-4 login-div">
+  <div class="row flex-container">
+    <!-- Div per il modulo di login -->
+    <div class="col col-lg-5 col-md-12 border rounded p-4 login-div">
       <form [formGroup]="loginForm" (ngSubmit)="login()">
         <div class="title">
           <strong>Login</strong>
@@ -13,7 +12,7 @@
             type="email"
             class="form-control"
             formControlName="email"
-            placeholder="Email"/>
+            placeholder="Email" />
         </div>
 
         <div class="form-outline mb-4">
@@ -22,11 +21,8 @@
             type="password"
             class="form-control"
             formControlName="password"
-            placeholder="Password"/>
+            placeholder="Password" />
         </div>
-        <!-- <div class="text-danger" >
-              parte errore da prendere da test
-            </div> -->
 
         <div class="text-center">
           <button type="submit" class="btn btn-primary btn-block mb-4">
@@ -34,6 +30,11 @@
           </button>
         </div>
       </form>
+    </div>
+
+    <!-- Div per l'immagine -->
+    <div class="col col-lg-5 profile-image">
+      <img src="/assets/homelogin.png" alt="Login Image" />
     </div>
   </div>
 </div>

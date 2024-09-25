@@ -6,7 +6,7 @@
   align-items: center;
   width: 100%; /* Ensure the container takes up the full width */
   max-width: 1200px; /* Adjust based on your layout */
-  margin: 0 auto; /* Center the container */
+  margin: 10 auto; /* Center the container */
   padding: 20px;
 }
 
