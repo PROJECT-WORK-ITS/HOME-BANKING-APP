@@ -7,6 +7,7 @@ import { DetailsComponent } from './components/details/details.component';
 import { SearchComponent } from './components/search/search.component';
 import { RicaricaComponent } from './components/ricarica/ricarica.component';
 import { BonificoComponent } from './components/bonifico/bonifico.component';
+import { CreditCardComponent } from './components/credit-card/credit-card.component';
 
 const routes: Routes = [
   {
@@ -32,16 +33,16 @@ const routes: Routes = [
   },
   {
     path: 'search',
-    component: SearchComponent
+    component: SearchComponent,
   },
   {
     path: 'ricarica',
-    component: RicaricaComponent
+    component: RicaricaComponent,
   },
   {
     path: 'bonifico',
-    component: BonificoComponent
-  }
+    component: BonificoComponent,
+  },
   // {
   //   path: '',
   //   redirectTo: '/login',

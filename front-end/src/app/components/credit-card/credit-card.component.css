@@ -1,0 +1,60 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700&display=swap");
+
+.container {
+  width: 40%;
+  height: 50vh;
+  display: flex;
+  margin-right: 0%;
+  margin-top: -15%;
+}
+
+/* Card */
+
+.card {
+  width: 380px;
+  height: 230px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  background-image: linear-gradient(to bottom right, red, rgb(83, 152, 195));
+  border-radius: 10px;
+  z-index: 1;
+  overflow: hidden;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  position: relative;
+}
+
+.visa_logo {
+  float: right;
+  padding: 10px;
+}
+
+.visa_logo img {
+  width: 70px;
+  height: 40px;
+}
+
+.visa_info {
+  padding: 10px;
+  margin: 30px 0;
+}
+
+.visa_info img {
+  width: 60px;
+  height: 45px;
+  margin-top: -5%;
+}
+
+.visa_info p {
+  font-size: 22px;
+  padding: 10px 0;
+  letter-spacing: 2px;
+  color: #ffffff;
+}
+
+.visa_crinfo {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 10px;
+  color: #ffffff;
+  margin-top: -15%;
+}

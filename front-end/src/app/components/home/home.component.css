@@ -1,82 +1,84 @@
-.mail{
-    background-color: white;
+@import url("https://fonts.googleapis.com/css2?family=josefin+Sans:wght@400;500;600;700&display=swap");
+
+.mail {
+  background-color: white;
 }
 
-.main-container{
+.main-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+
+  .left-container {
+    flex: 40%;
+    margin: 4% 0 0 3%;
+  }
+  .right-container {
+    flex: 60%;
+  }
+}
+
+.saldo {
+  width: 50vh;
+  height: 30vh;
+  background-color: whitesmoke;
+  border-radius: 15px;
+  text-align: center;
+  font-size: 25px;
+  margin-top: -2%;
+  .top {
+    padding-top: 15px;
+  }
+  .bottom {
+    font-size: 40px;
     display: flex;
-    flex-direction: row;
     justify-content: center;
-    
-    .left-container{
-        flex: 40%;
-        margin: 4% 0 0 3%;
+    img {
+      height: 40px;
+      width: 40px;
+      margin-left: 20px;
+      cursor: pointer;
     }
-    .right-container {
-        flex: 60%;
-    }
+  }
+  .iban {
+    text-align: left;
+    font-size: 17px;
+    padding-left: 10px;
+    border-top: 1px solid black;
+  }
 }
 
-.saldo{
-    width: 50vh;
-    height: 25vh;
-    background-color: whitesmoke;
-    border-radius: 15px;
-    text-align: center;
-    font-size: 25px;
-    .top{
-        padding-top: 15px;
-    }
-    .bottom{
-        font-size: 40px;
-        display: flex;
-        justify-content: center;
-        img{
-            height: 40px;
-            width: 40px;
-            margin-left: 20px;
-            cursor: pointer;
-        }
-    }
-    .iban{
-        text-align: left;
-        font-size: 17px;
-        padding-left: 10px;
-        border-top: 1px solid black;
-    }
+.nome {
+  font-size: 50px;
+  font-weight: bolder;
+  color: white;
+  margin: 4% 0 10% 0;
 }
 
-.nome{
-    font-size: 50px;
+.movimento {
+  margin-top: 40px;
+  background-color: whitesmoke;
+  display: flex;
+  flex-direction: row;
+  border-radius: 15px;
+  width: 100vh;
+  height: 10vh;
+  img {
+    margin-top: 8px;
+    height: 50px;
+    width: 50px;
+  }
+  .details {
+    padding-top: 10px;
+    padding-left: 20px;
     font-weight: bolder;
-    color:white;
-    margin: 4% 0 10% 0;
-}
-
-.movimento{
-    margin-top: 40px;
-    background-color: whitesmoke;
-    display: flex;
-    flex-direction: row;
-    border-radius: 15px;
-    width: 100vh;
-    height: 10vh;
-    img{
-        margin-top: 8px;
-        height: 50px;
-        width: 50px;
+    a {
+      text-decoration: none;
     }
-    .details{
-        padding-top: 10px;
-        padding-left: 20px;
-        font-weight: bolder;
-        a{
-            text-decoration: none;
-        }
-    }
+  }
 
-    .prezzo{
-        padding-top: 22px;
-        padding-left: 55vh;
-    }
-
+  .prezzo {
+    padding-top: 22px;
+    padding-left: 55vh;
+  }
 }
