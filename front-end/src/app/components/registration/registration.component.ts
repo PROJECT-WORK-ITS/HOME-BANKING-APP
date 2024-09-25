@@ -30,6 +30,7 @@ export class RegistrationComponent {
 
 
   isSubmitted = false;
+  router: any;
     
   constructor(protected fb: FormBuilder,
               protected otpService: otpService,
@@ -98,7 +99,7 @@ export class RegistrationComponent {
         console.log(otp)
         if (otp.valid) {
           this.isSubmitted = false;
-          
+          this.router.navigate(['/login'])
         }
       });
 
