@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CreditCardComponent } from '../credit-card/credit-card.component';
 import { HomePageService } from '../../services/home-page.service';
 @Component({
   selector: 'app-home',
