@@ -1,25 +1,36 @@
 <div class="container">
-    <!-- Sezione form e icona -->
-    <div class="content-wrapper">
-        <!-- Sezione per l'inserimento dei dati di bonifico -->
-        <div class="form-section">
-            <form>
-                <!-- Campo per inserire l'IBAN del destinatario -->
-                <label for="iban">Inserisci l'IBAN del destinatario</label>
-                <input type="text" id="iban" name="iban" required>
+  <!-- Sezione form e icona -->
+  <div class="content-wrapper">
+    <!-- Sezione per l'inserimento dei dati di bonifico -->
+    <div class="form-section">
+      <form [formGroup]="bonificoForm" (ngSubmit)="onSubmit()">
+        <label for="ibanMittente">IBAN Mittente:</label>
+        <input id="ibanMittente" formControlName="ibanMittente" type="text" />
+        <label for="ibanDestinatario">IBAN Destinatario:</label>
+        <input
+          id="ibanDestinatario"
+          formControlName="ibanDestinatario"
+          type="text"
+        />
 
-                <!-- Campo per inserire l'importo del bonifico -->
-                <label for="amount">Inserisci l'importo</label>
-                <input type="number" id="amount" name="amount" required>
+        <label for="importo">Importo:</label>
+        <input id="importo" formControlName="importo" type="number" />
 
-                <!-- Pulsante per inviare il modulo -->
-                <button type="submit">Invia</button>
-            </form>
-        </div>
+        <label for="descrizione">Descrizione (Opzionale):</label>
+        <input id="descrizione" formControlName="descrizione" type="text" />
 
-        <!-- Icona rappresentativa del bonifico bancario verso un simbolo Euro -->
-        <div class="icon-section">
-            <img src="assets/wire_transfer_eur_big.png" alt="Icona di bonifico bancario">
-        </div>
+        <button type="submit" [disabled]="!bonificoForm.valid">
+          Effettua Bonifico
+        </button>
+      </form>
     </div>
+
+    <!-- Icona rappresentativa del bonifico bancario verso un simbolo Euro -->
+    <div class="icon-section">
+      <img
+        src="assets/wire_transfer_eur_big.png"
+        alt="Icona di bonifico bancario"
+      />
+    </div>
+  </div>
 </div>

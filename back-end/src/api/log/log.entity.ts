@@ -8,6 +8,8 @@ const logSchema = new Schema({
   timestamp: { type: Date, default: Date.now },
   // Indica se l'operazione è andata a buon fine
   success: { type: Boolean, required: true },
+  // Specifica quale operazione è stata eseguita
+  operationType: { type: String, required: true },
 });
 
 // Esporta lo schema per poterlo utilizzare in altre parti dell'applicazione

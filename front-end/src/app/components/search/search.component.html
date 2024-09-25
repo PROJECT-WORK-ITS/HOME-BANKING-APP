@@ -2,16 +2,122 @@
     <div class="title">
         <h3>Seleziona il tipo di filtro</h3>
     </div>
-    <div class="filters-container">
-        <div class="filter">
+    <div class="select-filter">
+        <button  type="button" class="filter" (click)="selectedFilter(1)" [ngClass]="{'selected': filter === 1}">
             Visualizza movimenti e saldo
-        </div>
-        <div class="filter">
+        </button>
+        <button type="button" class="filter" (click)="selectedFilter(2)"  [ngClass]="{'selected': filter === 2}">
             Cerca movimenti per categoria
-        </div>
-        <div class="filter">
+        </button>
+        <button type="button" class="filter" (click)="selectedFilter(3)" [ngClass]="{'selected': filter === 3}">
             Cerca movimenti per intervallo di date
-        </div>
+        </button>
     </div>
 
+    <div class="bottom">
+        <div class="filter">
+            <div *ngIf="filter === 0" class="option">
+                <h4>Filtri</h4><br>
+            </div>
+            <div *ngIf="filter === 1" class="option">
+                <h4>Filtri</h4><br>
+                Inserisci il numero di movimenti che vuoi visualizzare:
+                <input type="number" min="1"><br><br><br>
+                <h5>Saldo attuale:</h5>
+                <div class="saldo">1235.67€</div>
+            </div>
+
+            <div *ngIf="filter === 2" class="option">
+                <h4>Filtri</h4><br>
+                Inserisci il numero di movimenti che vuoi visualizzare:
+                <input type="number" min="1"><br><br>
+                Inserisci la categoria di movimento:
+                <select class="form-control">
+                    <option value="ricarica">Ricarica</option>
+                    <option value="bonifico-entrata">Bonifico in entrata</option>
+                    <option value="bonifico-uscita">Bonifico in uscita</option>
+                    <option value="apertura">Apertura conto</option>
+
+                  </select>
+            </div>
+
+            <div *ngIf="filter === 3" class="option">
+                <h4>Filtri</h4><br>
+                Inserisci il numero di movimenti che vuoi visualizzare:
+                <input type="number" min="1"><br><br>
+                
+                Inserisci l'intervallo di date:
+                <form class="row row-cols-sm-auto">
+                    <div class="col-12">
+                        <div class="dp-hidden position-absolute">
+                            <div class="input-group">
+                                <input
+                                    name="datepicker"
+                                    class="form-control"
+                                    ngbDatepicker
+                                    #datepicker="ngbDatepicker"
+                                    [autoClose]="'outside'"
+                                    (dateSelect)="onDateSelection($event)"
+                                    [displayMonths]="2"
+                                    [dayTemplate]="t"
+                                    outsideDays="hidden"
+                                    [startDate]="fromDate!"
+                                    tabindex="-1"
+                                />
+                                <ng-template #t let-date let-focused="focused">
+                                    <span
+                                        class="custom-day"
+                                        [class.focused]="focused"
+                                        [class.range]="isRange(date)"
+                                        [class.faded]="isHovered(date) || isInside(date)"
+                                        (mouseenter)="hoveredDate = date"
+                                        (mouseleave)="hoveredDate = null"
+                                    >
+                                        {{ date.day }}
+                                    </span>
+                                </ng-template>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <input
+                                #dpFromDate
+                                class="form-control"
+                                placeholder="yyyy-mm-dd"
+                                name="dpFromDate"
+                                [value]="formatter.format(fromDate)"
+                                (input)="fromDate = validateInput(fromDate, dpFromDate.value)"
+                            />
+                            <button class="button-calendar" (click)="datepicker.toggle()" type="button"><img src="assets/calendar.png"></button>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="input-group">
+                            <input
+                                #dpToDate
+                                class="form-control"
+                                placeholder="yyyy-mm-dd"
+                                name="dpToDate"
+                                [value]="formatter.format(toDate)"
+                                (input)="toDate = validateInput(toDate, dpToDate.value)"
+                            />
+                            <button class="button-calendar" (click)="datepicker.toggle()" type="button"><img src="assets/calendar.png"></button>
+                        </div>
+                    </div>
+                </form>
+                
+
+            </div>
+        </div>
+
+        <div class="table-container">
+            <table class="table">
+                <tr>
+                    <th>Data</th>
+                    <th>Importo</th>
+                    <th>Nome categoria</th>
+                </tr>
+            </table>
+
+        </div>
+    </div>
 </div>

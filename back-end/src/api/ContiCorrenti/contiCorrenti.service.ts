@@ -5,6 +5,8 @@ import { UserExistsError } from "../../errors/user-exists";
 import * as bcrypt from 'bcrypt';
 import { OtpModel } from "../Otp/otp.model";
 import { NotFoundError } from "../../errors/not-found";
+const { faker } = require('@faker-js/faker');
+
 
 
 export class ContiCorrentiService {
@@ -15,14 +17,10 @@ export class ContiCorrentiService {
       throw new UserExistsError();
     }
 
-    const validEmail = await OtpModel.findOne({'email': credentials.email, 'valid': true});
-    if (!validEmail) {
-      throw new Error("Email non verificata");
-    }
-
     const hashedPassword = await bcrypt.hash(credentials.password, 10);
 
-    const newConto = await ContoCorrenteModel.create(contoCorrente);
+    console.log({...contoCorrente, IBAN: this.updIBAN()});
+    const newConto = await ContoCorrenteModel.create({...contoCorrente, IBAN: this.updIBAN()});
 
     await UserIdentityModel.create({
       provider: 'local',
@@ -36,25 +34,20 @@ export class ContiCorrentiService {
     return newConto;
   }
 
-  async updIBAN(id: string, IBAN: string): Promise<ContiCorrenti> {
-      
-      const existing = await ContoCorrente.findOne({_id: id});
-      if (!existing) {
-        throw new NotFoundError();
-      }
-      
-      const filter = { _id: id };
-      const update = { IBAN: IBAN };
+  updIBAN(): string {
+    
+    const checkDigits = faker.number.int({ min: 10, max: 99 }).toString(); // Due cifre di controllo
+    const bankCode = faker.string.numeric(5); // Codice banca (5 cifre)
+    const branchCode = faker.string.numeric(5); // Codice filiale (5 cifre)
+    const accountNumber = faker.string.numeric(12); // Numero di conto (12 cifre)
   
-      const updConto = await ContoCorrente.findOneAndUpdate(filter, update, { new: true });
-      
-      return updConto!;
-
+    // Componiamo l'IBAN
+    const iban = `IT${checkDigits}${bankCode}${branchCode}${accountNumber}`;
+  
+    return iban;
+    
   }
 
 }
-
-
-
 
 export default new ContiCorrentiService();

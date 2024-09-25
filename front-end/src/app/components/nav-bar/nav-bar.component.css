@@ -1,26 +1,32 @@
-a{
-    width: 100px;
-    color: black;
+a {
+  width: 100px;
+  color: black;
 }
 
 a:hover {
-    color: rgba(9, 77, 179, 0.8);
-    font-weight: bolder;
-    cursor: pointer;
+  color: rgba(9, 77, 179, 0.8);
+  font-weight: bolder;
+  cursor: pointer;
 }
 
-.container-fluid{
-    justify-content: end;
+.dc {
+  font-size: x-large;
+  font-weight: 600;
+  color: rgba(9, 77, 179, 0.8);
 }
 
-nav{
-    background-color: whitesmoke!important;
+.container-fluid {
+  justify-content: end;
 }
 
-.logo{
-    width: 53%;
-    img{
-        width: 150px;
-    }
-    justify-content: left;
+nav {
+  background-color: whitesmoke !important;
+}
+
+.logo {
+  width: 53%;
+  img {
+    width: 150px;
+  }
+  justify-content: left;
 }
