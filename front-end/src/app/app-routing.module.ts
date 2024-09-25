@@ -8,6 +8,7 @@ import { SearchComponent } from './components/search/search.component';
 import { RicaricaComponent } from './components/ricarica/ricarica.component';
 import { BonificoComponent } from './components/bonifico/bonifico.component';
 import { ProfiloComponent } from './components/profilo/profilo.component';
+import { ChangePasswordComponent } from './components/change-password/change-password.component';
 
 const routes: Routes = [
   {
@@ -46,6 +47,10 @@ const routes: Routes = [
   {
     path: 'profilo',
     component: ProfiloComponent
+  },
+  {
+    path: 'change-password',
+    component: ChangePasswordComponent
   }
   // {
   //   path: '',

@@ -14,6 +14,7 @@ import { BonificoComponent } from './components/bonifico/bonifico.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ProfiloComponent } from './components/profilo/profilo.component';
+import { ChangePasswordComponent } from './components/change-password/change-password.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,7 +26,8 @@ import { ProfiloComponent } from './components/profilo/profilo.component';
     SearchComponent,
     RicaricaComponent,
     BonificoComponent,
-    ProfiloComponent
+    ProfiloComponent,
+    ChangePasswordComponent
   ],
   imports: [
     BrowserModule,
