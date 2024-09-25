@@ -2,3 +2,7 @@
 body {
   background-color: rgba(9, 77, 179, 0.8);
 }
+
+* {
+  font-family: "Rubik", sans-serif;
+}
