@@ -18,6 +18,7 @@ import {
   HttpClientModule,
 } from '@angular/common/http';
 import { AuthInterceptor } from './utils/auth.interceptor';
+import { CreditCardComponent } from './components/credit-card/credit-card.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,6 +30,7 @@ import { AuthInterceptor } from './utils/auth.interceptor';
     SearchComponent,
     RicaricaComponent,
     BonificoComponent,
+    CreditCardComponent,
   ],
   imports: [
     BrowserModule,
