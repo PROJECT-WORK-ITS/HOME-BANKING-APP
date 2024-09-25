@@ -70,8 +70,8 @@ button img {
 .iban {
   padding-top: 10px;
   margin-top: 10px;
-  text-align: left;
-  font-size: 17px;
+  text-align: center;
+  font-size: 20px;
   padding-left: 10px;
   border-top: 1px solid black;
 }
@@ -88,6 +88,8 @@ button img {
 .saldo-nascosto {
   font-size: 30px; /* Dimensione della scritta "Saldo Nascosto" */
   text-align: center; /* Centrato orizzontalmente */
+
+  margin-right: 30px;
 }
 
 /* Stile per i movimenti */

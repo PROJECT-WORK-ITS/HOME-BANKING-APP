@@ -2,10 +2,10 @@
     <div class="profile-card">
       <h2 class="profile-info">INFORMAZIONI SUL PROFILO</h2>
       <p><strong>E-mail:</strong> mariorossigmail.com</p>
-      <p><strong>Cognome:</strong> Rossi</p>
-      <p><strong>Nome:</strong> Mario</p>
-      <p><strong>Data Apertura:</strong> 19/09/2024</p>
-      <p><strong>IBAN:</strong> IT60 X054 2811 1010 0000 0123 456</p>
+      <p><strong>Cognome:</strong> {{userData?.lastName}}</p>
+      <p><strong>Nome:</strong> {{userData?.firstName}}</p>
+      <p><strong>Data Apertura:</strong> {{userData?.openingDate | date:'dd MMMM yyyy'}}</p>
+      <p><strong>IBAN:</strong> {{userData?.IBAN}}</p>
     </div>
     <div class="profile-image">
       <img src="assets/immagineprofilo.png" alt="akfjns7sh.png">

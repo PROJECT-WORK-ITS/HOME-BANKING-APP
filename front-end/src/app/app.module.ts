@@ -22,6 +22,7 @@ import {
 } from '@angular/common/http';
 import { AuthInterceptor } from './utils/auth.interceptor';
 import { CreditCardComponent } from './components/credit-card/credit-card.component';
+import { IfNotAuthenticatedDirective } from './directives/if-not-authenticated.directive';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,8 @@ import { CreditCardComponent } from './components/credit-card/credit-card.compon
     ChangePasswordComponent,
     IfAuthenticatedDirective,
     CreditCardComponent,
+    IfAuthenticatedDirective,
+    IfNotAuthenticatedDirective,
   ],
   imports: [
     BrowserModule,
@@ -47,7 +50,6 @@ import { CreditCardComponent } from './components/credit-card/credit-card.compon
     HttpClientModule,
   ],
   providers: [
-    { provide: LOCALE_ID, useValue: 'it-IT' },
     { provide: DEFAULT_CURRENCY_CODE, useValue: 'EUR' },
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
   ],
