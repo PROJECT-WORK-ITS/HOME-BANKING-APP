@@ -11,6 +11,7 @@ import { CreditCardComponent } from './components/credit-card/credit-card.compon
 import { ProfiloComponent } from './components/profilo/profilo.component';
 import { ChangePasswordComponent } from './components/change-password/change-password.component';
 import { authGuard } from './guards/auth.guard';
+import { notAuthGuard } from './guards/not-auth.guard';
 
 const routes: Routes = [
   {
@@ -20,10 +21,12 @@ const routes: Routes = [
   },
   {
     path: 'registration',
+    canActivate: [notAuthGuard],
     component: RegistrationComponent,
   },
   {
     path: 'login',
+    canActivate: [notAuthGuard],
     component: LoginComponent,
   },
   {
@@ -33,23 +36,28 @@ const routes: Routes = [
   },
   {
     path: 'details',
+    canActivate: [authGuard],
     component: DetailsComponent,
   },
   {
     path: 'search',
+    canActivate: [authGuard],
     component: SearchComponent,
   },
   {
     path: 'ricarica',
+    canActivate: [authGuard],
     component: RicaricaComponent,
   },
   {
     path: 'bonifico',
+    canActivate: [authGuard],
     component: BonificoComponent,
   },
   {
     path: 'profilo',
-    component: ProfiloComponent
+    canActivate: [authGuard],
+    component: ProfiloComponent,
   },
   {
     path: 'change-password',

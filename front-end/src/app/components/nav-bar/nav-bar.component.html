@@ -1,20 +1,40 @@
-<nav class="navbar navbar-dark bg-primary mb-3">
-  <div class="container-fluid">
-    <div class="logo nav-item">
-      <img src="assets/logo.png" alt="logo">
+<nav class="navbar navbar-dark row bg-primary mb-3">
+  <div class="col-auto">
+    <div class="row justify-content-start">
+      <div class="logo nav-item">
+        <img src="assets/logo.png" alt="logo">
+      </div>
     </div>
-    <a class="nav-link" [routerLink]="['home']">Home</a>
-    <a class="nav-link" [routerLink]="['search']">Ricerca</a>
-    <a class="nav-link" [routerLink]="['ricarica']">Ricarica</a>
-    <a class="nav-link" [routerLink]="['bonifico']">Bonifico</a>
-    
+  </div>
+  <div class="col-auto" *ifAuthenticated>
+    <div class="row">
+      <a class="nav-link" [routerLink]="['home']" >Home</a>
+      <a class="nav-link" [routerLink]="['search']" >Ricerca</a>
+      <a class="nav-link" [routerLink]="['ricarica']" >Ricarica</a>
+      <a class="nav-link" [routerLink]="['bonifico']" >Bonifico</a>
+    </div>
+  </div>
+  <div class="col-auto" *ifAuthenticated>
     <!-- <a class="navbar-brand" [routerLink]="['/home']">Benvenuto </a> -->
-    <ul class="navbar-nav mr-2" >
-      <li class="nav-item" >
-        <a class="nav-link" [routerLink]="['profilo']">Profilo</a>
+    <ul class="navbar-nav mr-2">
+      <li class="nav-item" ngbDropdown display="dynamic" placement="bottom-end">
+        <a class="nav-link p-0" tabindex="0" ngbDropdownToggle role="button">
+          <img src="assets/profilo.png" class="nav-user-avatar">
+          {{contoCorrente?.firstName}}
+        </a>
+        <div ngbDropdownMenu aria-labelledby="navbarDropdown3" class="dropdown-menu">
+            <a ngbDropdownItem href="#" [routerLink]="['profilo']">Profilo</a>
+            <a ngbDropdownItem href="#" [routerLink]="['change-password']">Modifica password</a>
+            <a ngbDropdownItem href="#" (click)="logout()">Logout</a>
+        </div>
       </li>
     </ul>
+</div>
+<div class="col-auto" *ifNotAuthenticated>
+  <div class="row">
     <a class="nav-link" [routerLink]="['login']">Login</a>
     <a class="nav-link" [routerLink]="['registration']">Registrazione</a>
   </div>
+</div>
+
 </nav>

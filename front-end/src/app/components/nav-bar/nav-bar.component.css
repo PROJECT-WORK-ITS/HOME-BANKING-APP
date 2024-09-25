@@ -15,18 +15,18 @@ a:hover {
   color: rgba(9, 77, 179, 0.8);
 }
 
-.container-fluid {
-  justify-content: end;
-}
-
 nav {
   background-color: whitesmoke !important;
+  padding: 15px 25px;
 }
 
 .logo {
-  width: 53%;
   img {
     width: 150px;
   }
-  justify-content: left;
+}
+
+.nav-user-avatar {
+  height: 40px;
+  border-radius: 50%;
 }
