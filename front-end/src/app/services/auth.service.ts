@@ -27,7 +27,7 @@ export class AuthService {
     return this.http.post<{user: ContiCorrenti, token: string}>('/api/login', {email, password})
       .pipe(
         tap(res => this.jwtSrv.setToken(res.token)),
-        tap(res => this._currentUser$.next(res.user)),
+        tap(res => this._currentUser$.next({...res.user, email: email})),
         map(res => res.user)
       );
   }
