@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { BonificoService } from '../../services/bonifico.service';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-bonifico',
@@ -9,18 +10,27 @@ import { BonificoService } from '../../services/bonifico.service';
 })
 export class BonificoComponent implements OnInit {
   bonificoForm!: FormGroup;
+  userData: any;
 
   constructor(
     private fb: FormBuilder,
-    private bonificoService: BonificoService
+    private bonificoService: BonificoService,
+    private authSrv: AuthService
   ) {}
 
   ngOnInit(): void {
+    this.authSrv.currentUser$.subscribe({
+      next: (data) => {
+        this.userData = data;
+      },
+      error: (err) => {
+        console.error(
+          "Errore nel recupero delle informazioni dell'user",
+          err
+        );
+      },
+    });   
     this.bonificoForm = this.fb.group({
-      ibanMittente: [
-        '',
-        [Validators.required, Validators.pattern('^[A-Z0-9]+$')],
-      ],
       ibanDestinatario: [
         '',
         [Validators.required, Validators.pattern('^[A-Z0-9]+$')],
@@ -32,7 +42,8 @@ export class BonificoComponent implements OnInit {
 
   onSubmit(): void {
     if (this.bonificoForm.valid) {
-      const bonificoData = this.bonificoForm.value;
+      let bonificoData = this.bonificoForm.value;
+      bonificoData.ibanMittente = this.userData.IBAN;
       this.bonificoService.effettuaBonifico(bonificoData).subscribe(
         (response) => {
           console.log('Bonifico effettuato con successo!', response);
