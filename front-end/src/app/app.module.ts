@@ -13,6 +13,7 @@ import { RicaricaComponent } from './components/ricarica/ricarica.component';
 import { BonificoComponent } from './components/bonifico/bonifico.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { ProfiloComponent } from './components/profilo/profilo.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,6 +25,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     SearchComponent,
     RicaricaComponent,
     BonificoComponent,
+    ProfiloComponent
   ],
   imports: [
     BrowserModule,
