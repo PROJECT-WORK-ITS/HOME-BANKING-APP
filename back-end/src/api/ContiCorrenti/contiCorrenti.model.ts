@@ -12,6 +12,7 @@ export const ContiCorrentiSchema: Schema = new Schema({
 });
 
 ContiCorrentiSchema.set("toJSON", {
+  virtuals: true,
   transform: (_, ret) => {
     delete ret._id;
     delete ret.__v;
@@ -20,6 +21,7 @@ ContiCorrentiSchema.set("toJSON", {
 });
 
 ContiCorrentiSchema.set("toObject", {
+  virtuals: true,
   transform: (_, ret) => {
     delete ret._id;
     delete ret.__v;

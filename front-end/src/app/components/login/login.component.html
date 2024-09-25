@@ -4,12 +4,21 @@
     <!-- Login Form Section -->
     <div class="login-div">
       <form>
+  <div class="col col-lg-5 dc">
+  <div class="row">
+    <!-- <div class="col col-lg-1"></div> -->
+    <div class="col col-lg-4 col-md-12 border rounded p-4 login-div">
+      <form [formGroup]="loginForm" (ngSubmit)="login()">
         <div class="title">
           <strong>Login</strong>
         </div>
         <div class="form-outline mb-4">
           <label class="form-label">Email</label>
-          <input type="email" class="form-control" formControlName="username" />
+          <input
+            type="email"
+            class="form-control"
+            formControlName="email"
+            placeholder="Email"/>
         </div>
 
         <div class="form-outline mb-4">
@@ -18,7 +27,7 @@
             type="password"
             class="form-control"
             formControlName="password"
-          />
+            placeholder="Password"/>
         </div>
 
         <div class="text-center">

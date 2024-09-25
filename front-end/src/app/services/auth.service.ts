@@ -43,7 +43,7 @@ export class AuthService {
   }
 
   private fetchConto() {
-    this.http.get<ContiCorrenti>('/api/users/me')
+    this.http.get<ContiCorrenti>('/api/conti-correnti/me')
       .subscribe(user => this._currentUser$.next(user));
   }
   

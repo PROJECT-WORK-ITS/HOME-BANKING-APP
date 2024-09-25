@@ -5,6 +5,7 @@ import { ContoCorrente as ContoCorrenteModel } from "../../../api/ContiCorrenti/
 export const JWT_SECRET = 'my_jwt_secret';
 
 passport.use(
+  
   new JwtStrategy({
     jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
     secretOrKey: JWT_SECRET

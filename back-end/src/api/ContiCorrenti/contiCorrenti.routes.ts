@@ -5,6 +5,6 @@ import { isAuthenticated } from "../../utils/auth/authenticated.middleware";
 
 const router = Router();
 
-router.patch("/me", isAuthenticated, me);
+router.get("/me", isAuthenticated, me);
 
 export default router;

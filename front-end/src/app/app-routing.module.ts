@@ -7,8 +7,10 @@ import { DetailsComponent } from './components/details/details.component';
 import { SearchComponent } from './components/search/search.component';
 import { RicaricaComponent } from './components/ricarica/ricarica.component';
 import { BonificoComponent } from './components/bonifico/bonifico.component';
+import { CreditCardComponent } from './components/credit-card/credit-card.component';
 import { ProfiloComponent } from './components/profilo/profilo.component';
 import { ChangePasswordComponent } from './components/change-password/change-password.component';
+import { authGuard } from './guards/auth.guard';
 
 const routes: Routes = [
   {
@@ -26,6 +28,7 @@ const routes: Routes = [
   },
   {
     path: 'home',
+    canActivate: [authGuard],
     component: HomeComponent,
   },
   {
@@ -34,15 +37,15 @@ const routes: Routes = [
   },
   {
     path: 'search',
-    component: SearchComponent
+    component: SearchComponent,
   },
   {
     path: 'ricarica',
-    component: RicaricaComponent
+    component: RicaricaComponent,
   },
   {
     path: 'bonifico',
-    component: BonificoComponent
+    component: BonificoComponent,
   },
   {
     path: 'profilo',

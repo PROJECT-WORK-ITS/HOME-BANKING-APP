@@ -2,19 +2,21 @@
   <div class="left-container">
     <div class="nome">
       Benvenuto <br />
-      Mario Rossi
+      <span>{{ userData?.firstName }} </span><span>{{ userData?.lastName }}</span>
     </div>
     <div class="saldo">
       <div class="top">Saldo Corrente</div>
-      <div class="bottom">
-        <div>
-          <span>{{ saldo | currency : "EUR" }}</span>
-        </div>
-        <div><img src="assets/occhio.png" /></div>
+      <div class="bottom" *ngIf="!saldoNascosto">
+        <div><span *ngIf="saldo">{{ saldo }}</span><span *ngIf="!saldo">-</span></div>
+        <button (click)="nascondiSaldo(true)"><img src="assets/occhio.png"/></button>
+      </div>
+      <div class="bottom" *ngIf="saldoNascosto">
+        <div class="saldo-nascosto"><span>Saldo Nascosto</span></div>
+        <button (click)="nascondiSaldo(false)"><img src="assets/occhionascosto.png"/></button>
       </div>
       <div class="iban">
         Il tuo IBAN: <br />
-        <span>IT</span>
+        <span>{{ userData?.IBAN }}</span>
       </div>
     </div>
   </div>
@@ -30,3 +32,4 @@
     </div>
   </div>
 </div>
+<!-- <app-credit-card></app-credit-card> -->
