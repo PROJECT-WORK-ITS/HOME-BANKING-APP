@@ -7,7 +7,8 @@ import { updateIBAN } from "./contiCorrenti.dto";
 
 export const me = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    res.json(req.user!);
+    const email = await contiCorrentiService.takeEmail(req.user!.id);
+    res.json({...req.user!, email});
   } catch (err) {
     next(err);
   }

@@ -44,6 +44,14 @@ export class ContiCorrentiService {
     });
   }
 
+  async takeEmail(contoId: string | undefined): Promise<string> {
+    const user = await UserIdentityModel.findOne({contoCorrente: contoId});
+    if (!user) {
+      throw new NotFoundError();
+    }
+
+    return user.credentials.email;
+  }
   updIBAN(): string {
     
     const checkDigits = faker.number.int({ min: 10, max: 99 }).toString(); // Due cifre di controllo
