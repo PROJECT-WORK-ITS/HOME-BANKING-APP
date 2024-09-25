@@ -6,6 +6,8 @@ import { UserExistsError } from "../../errors/user-exists";
 import contiCorrentiService from "../ContiCorrenti/contiCorrenti.service";
 import passport from "passport";
 import * as jwt from 'jsonwebtoken';
+import * as bcrypt from 'bcrypt';
+import { UserIdentity } from "../../utils/auth/local/user-identity.entity";
 
 const JWT_SECRET = 'my_jwt_secret';
 
@@ -57,3 +59,41 @@ export const add = async (
     }
   }
 }
+
+// Nuovo: Cambiare password
+export const changePassword = async (
+  req: TypedRequest<{ currentPassword: string; newPassword: string }>,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    const { currentPassword, newPassword } = req.body;
+    const contoId = req.user!.id;
+
+    // Validazione della nuova password
+    if (!currentPassword || !newPassword) {
+      return res.status(400).json({ message: 'Current and new password are required.' });
+    }
+
+    // Trova l'utente e verifica la password corrente
+    const user: UserIdentity[] = await contiCorrentiService.findUserByConto(contoId); // Usiamo il contiCorrentiService per trovare l'utente
+    if (!user) {
+      return res.status(404).json({ message: 'User non collegato al conto' });
+    }
+ 
+    if (currentPassword !== user[0].credentials.hashedPassword) {
+      return res.status(400).json({ message: 'Incorrect current password.' });
+    }
+
+    // Cripta la nuova password
+    const hashedNewPassword = await bcrypt.hash(newPassword, 10);
+
+    // Aggiorna la password
+    await contiCorrentiService.updatePassword(contoId, hashedNewPassword);
+
+    return res.status(200).json({ message: 'Password updated successfully.' });
+
+  } catch (err) {
+    next(err);
+  }
+};

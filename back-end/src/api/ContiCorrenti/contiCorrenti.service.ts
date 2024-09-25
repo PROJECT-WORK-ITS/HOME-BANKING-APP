@@ -5,8 +5,8 @@ import { UserExistsError } from "../../errors/user-exists";
 import * as bcrypt from 'bcrypt';
 import { OtpModel } from "../Otp/otp.model";
 import { NotFoundError } from "../../errors/not-found";
+import { UserIdentity } from "../../utils/auth/local/user-identity.entity";
 const { faker } = require('@faker-js/faker');
-
 
 
 export class ContiCorrentiService {
@@ -32,6 +32,16 @@ export class ContiCorrentiService {
     })
 
     return newConto;
+  }
+
+  async findUserByConto(contoId: string | undefined): Promise<UserIdentity[]> {
+    return await UserIdentityModel.find({contoCorrente: contoId});
+  }
+
+  async updatePassword(contoId: string | undefined, newHashedPassword: string) {
+    return await UserIdentityModel.updateOne({contoCorrente: contoId}, {
+      "credentials.hashedPassword": newHashedPassword,
+    });
   }
 
   updIBAN(): string {
