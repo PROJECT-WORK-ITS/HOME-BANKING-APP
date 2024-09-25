@@ -9,6 +9,7 @@ import { RicaricaComponent } from './components/ricarica/ricarica.component';
 import { BonificoComponent } from './components/bonifico/bonifico.component';
 import { CreditCardComponent } from './components/credit-card/credit-card.component';
 import { ProfiloComponent } from './components/profilo/profilo.component';
+import { ChangePasswordComponent } from './components/change-password/change-password.component';
 import { authGuard } from './guards/auth.guard';
 
 const routes: Routes = [
@@ -48,8 +49,12 @@ const routes: Routes = [
   },
   {
     path: 'profilo',
-    component: ProfiloComponent,
+    component: ProfiloComponent
   },
+  {
+    path: 'change-password',
+    component: ChangePasswordComponent
+  }
   // {
   //   path: '',
   //   redirectTo: '/login',

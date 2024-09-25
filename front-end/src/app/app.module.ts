@@ -12,6 +12,9 @@ import { SearchComponent } from './components/search/search.component';
 import { RicaricaComponent } from './components/ricarica/ricarica.component';
 import { BonificoComponent } from './components/bonifico/bonifico.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ProfiloComponent } from './components/profilo/profilo.component';
+import { ChangePasswordComponent } from './components/change-password/change-password.component';
+import { IfAuthenticatedDirective } from './directives/if-authenticated.directive';
 import {
   HTTP_INTERCEPTORS,
   HttpClient,
@@ -19,6 +22,7 @@ import {
 } from '@angular/common/http';
 import { AuthInterceptor } from './utils/auth.interceptor';
 import { CreditCardComponent } from './components/credit-card/credit-card.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,6 +34,9 @@ import { CreditCardComponent } from './components/credit-card/credit-card.compon
     SearchComponent,
     RicaricaComponent,
     BonificoComponent,
+    ProfiloComponent,
+    ChangePasswordComponent,
+    IfAuthenticatedDirective,
     CreditCardComponent,
   ],
   imports: [
@@ -40,7 +47,6 @@ import { CreditCardComponent } from './components/credit-card/credit-card.compon
     HttpClientModule,
   ],
   providers: [
-    { provide: LOCALE_ID, useValue: 'it-IT' },
     { provide: DEFAULT_CURRENCY_CODE, useValue: 'EUR' },
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
   ],

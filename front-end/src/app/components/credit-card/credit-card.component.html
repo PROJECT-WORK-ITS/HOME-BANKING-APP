@@ -1,21 +1,36 @@
 <div class="container right-container">
-  <div class="card">
-    <div class="visa_logo">
-      <img
-        src="https://raw.githubusercontent.com/muhammederdem/credit-card-form/master/src/assets/images/visa.png"
-        alt=""
-      />
+  <div
+    class="credit-card"
+    [ngClass]="{ flipped: isFlipped }"
+    (click)="toggleFlip()"
+  >
+    <!-- Front side of the card -->
+    <div class="card-front">
+      <div class="visa_logo">
+        <img
+          src="https://raw.githubusercontent.com/muhammederdem/credit-card-form/master/src/assets/images/visa.png"
+          alt="Visa Logo"
+        />
+      </div>
+      <div class="visa-name-bank">
+        <p>CREDIT PAUL</p>
+      </div>
+      <div class="visa_info">
+        <img
+          src="https://raw.githubusercontent.com/muhammederdem/credit-card-form/master/src/assets/images/chip.png"
+          alt="Chip"
+        />
+        <p>4586 7985 9271 6388</p>
+      </div>
+      <div class="visa_crinfo">
+        <p></p>
+        <p>Mario Rossi</p>
+      </div>
     </div>
-    <div class="visa_info">
-      <img
-        src="https://raw.githubusercontent.com/muhammederdem/credit-card-form/master/src/assets/images/chip.png"
-        alt=""
-      />
-      <p>4586 7985 9271 6388</p>
-    </div>
-    <div class="visa_crinfo">
-      <p>02/12</p>
-      <p>Mario Rossi</p>
+
+    <!-- Back side of the card -->
+    <div class="card-back">
+      <div class="black-stripe"></div>
     </div>
   </div>
 </div>

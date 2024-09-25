@@ -1,16 +1,31 @@
-.dc {
-  background-image: url(../../../../Screenshot\ 2024-09-24\ 154541.png);
-  height: 500px;
-  width: 900px;
-  margin-left: 500px;
-  position: absolute;
-  border-radius: 25px;
+
+/* Flex container to align the login form and image */
+.flex-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%; /* Ensure the container takes up the full width */
+  max-width: 1200px; /* Adjust based on your layout */
+  margin: 10 auto; /* Center the container */
+  padding: 20px;
 }
 
+/* Ensure the form takes up space properly */
 .login-div {
   background-color: aliceblue;
   border-radius: 20px !important;
-  margin-top: 50px;
+  padding: 20px;
+  width: 40%; /* Set form to take up 60% of the container */
+}
+
+.profile-image {
+  margin-left: 30px; /* Space between the form and image */
+  width: 35%; /* Set the image container to 35% of the width */
+}
+
+.profile-image img {
+  max-width: 100%; /* Ensure the image scales properly */
+  border-radius: 15px;
 }
 
 .title {
@@ -25,4 +40,21 @@
 
 .text-center {
   margin-top: 40px;
+}
+
+/* Stack form and image vertically on smaller screens */
+@media (max-width: 768px) {
+  .flex-container {
+    flex-direction: column; /* Stack the form and image vertically */
+    align-items: center;
+  }
+
+  .profile-image {
+    margin-top: 20px; /* Space between the form and image when stacked */
+    width: 100%; /* Image will take full width */
+  }
+
+  .login-div {
+    width: 100%; /* Form will also take full width */
+  }
 }
