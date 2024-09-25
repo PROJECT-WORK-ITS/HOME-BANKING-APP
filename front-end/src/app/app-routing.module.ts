@@ -22,11 +22,11 @@ const routes: Routes = [
   },
   {
     path: 'login',
-    canActivate: [authGuard],
     component: LoginComponent,
   },
   {
     path: 'home',
+    canActivate: [authGuard],
     component: HomeComponent,
   },
   {
