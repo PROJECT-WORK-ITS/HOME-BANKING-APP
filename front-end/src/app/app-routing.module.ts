@@ -8,6 +8,7 @@ import { SearchComponent } from './components/search/search.component';
 import { RicaricaComponent } from './components/ricarica/ricarica.component';
 import { BonificoComponent } from './components/bonifico/bonifico.component';
 import { ProfiloComponent } from './components/profilo/profilo.component';
+import { authGuard } from './guards/auth.guard';
 
 const routes: Routes = [
   {
@@ -21,6 +22,7 @@ const routes: Routes = [
   },
   {
     path: 'login',
+    canActivate: [authGuard],
     component: LoginComponent,
   },
   {
