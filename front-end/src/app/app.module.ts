@@ -47,7 +47,6 @@ import { CreditCardComponent } from './components/credit-card/credit-card.compon
     HttpClientModule,
   ],
   providers: [
-    { provide: LOCALE_ID, useValue: 'it-IT' },
     { provide: DEFAULT_CURRENCY_CODE, useValue: 'EUR' },
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
   ],
