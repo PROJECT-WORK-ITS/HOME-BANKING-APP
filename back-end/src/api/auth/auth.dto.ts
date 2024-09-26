@@ -25,7 +25,7 @@ export class AddUserDTO {
   @Matches(
     new RegExp('^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$'),
     {
-      message: 'password must contain at least 1 uppercase letter, 1 lowercase letter, 1 number and a special character'
+      message: 'Password non sicura, deve contenere almeno un lettera maiuscola, una minuscola, un numero e un carattere speciale, '
     }
   )
   password: string;

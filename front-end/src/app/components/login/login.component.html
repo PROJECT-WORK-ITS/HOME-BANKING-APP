@@ -8,20 +8,42 @@
         </div>
         <div class="form-outline mb-4">
           <label class="form-label">Email</label>
-          <input
-            type="email"
-            class="form-control"
-            formControlName="email"
-            placeholder="Email" />
+          <div class="input-group">
+            <input
+              type="email"
+              class="form-control"
+              formControlName="email"
+              placeholder="Email"
+              [class.is-invalid]="loginForm.get('email')?.invalid
+                      && (loginForm.get('email')?.dirty
+                      || loginForm.get('email')?.touched
+                      || isSubmitted)"/>
+              <div class="invalid-tooltip">
+                {{ loginForm.get('email')?.invalid ? "Email non valida" : undefined }}
+              </div>
+            </div>
         </div>
 
         <div class="form-outline mb-4">
           <label class="form-label">Password</label>
+          <div class="input-group">
           <input
             type="password"
             class="form-control"
             formControlName="password"
-            placeholder="Password" />
+            placeholder="Password"
+            [class.is-invalid]="loginForm.get('password')?.invalid
+            && (loginForm.get('password')?.dirty
+            || loginForm.get('password')?.touched
+            || isSubmitted)"/>
+            <div class="invalid-tooltip">
+              {{ loginForm.get('password')?.invalid ? "Password non valida" : undefined }}
+            </div>
+          </div>
+        </div>
+
+        <div class="text-danger mb-3" *ngIf="loginError">
+          {{ loginError }}
         </div>
 
         <div class="text-center">

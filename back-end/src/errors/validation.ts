@@ -6,6 +6,7 @@ export class ValidationError extends Error {
 
   constructor(errors: OriginalValidationError[]) {
     super();
+    
     this.originalErrors = errors;
     this.name = 'ValidationError';
     this.message = this.originalErrors

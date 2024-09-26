@@ -14,6 +14,7 @@ export class LoginComponent {
     email: ['', [Validators.required, Validators.email]],
     password: ['', Validators.required]
   })
+  isSubmitted = false;
 
   loginError = '';
 
@@ -23,6 +24,7 @@ export class LoginComponent {
   ) { }
 
   login() {
+    this.isSubmitted = true;
     if (this.loginForm.valid) {
       const { email, password } = this.loginForm.value;
       this.authSrv.login(email!, password!)
