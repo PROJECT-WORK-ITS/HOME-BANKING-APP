@@ -8,7 +8,7 @@ import { isAuthenticated } from "../../utils/auth/authenticated.middleware";
 const router = Router();
 
 router.post('/login', validate(LoginDTO), login);
-router.post('/register', validate(AddUserDTO, 'body'), add);
+router.post('/register', validate(AddUserDTO), add);
 router.post('/change-password', isAuthenticated, changePassword)
 
 export default router;
