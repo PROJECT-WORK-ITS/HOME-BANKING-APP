@@ -24,8 +24,8 @@
   border: 2px solid rgba(255, 255, 255, 0.2);
   background-image: linear-gradient(
     to bottom right,
-    rgb(243, 17, 171),
-    rgb(86, 182, 233)
+    rgb(235, 3, 215),
+    rgb(17, 200, 160)
   );
 
   z-index: 1;
