@@ -1,11 +1,10 @@
+<div class="nome">
+  Benvenuto
+  <span>{{ userData?.firstName }} </span><span>{{ userData?.lastName }} !</span>
+</div>
 <div class="main-container">
   <div class="left-container">
-    <div class="nome">
-      Benvenuto <br />
-      <span>{{ userData?.firstName }} </span
-      ><span>{{ userData?.lastName }}</span>
-    </div>
-    <div class="saldo">
+    <!-- <div class="saldo">
       <div class="top">SALDO CORRENTE</div>
       <div class="bottom" *ngIf="!saldoNascosto">
         <div>
@@ -13,20 +12,21 @@
           ><span *ngIf="!saldo">-</span>
         </div>
         <button (click)="nascondiSaldo(true)">
-          <img src="assets/occhio.png" />
+          <img src="assets/occhio1.png" />
         </button>
       </div>
       <div class="bottom" *ngIf="saldoNascosto">
         <div class="saldo-nascosto"><span>Saldo Nascosto</span></div>
         <button (click)="nascondiSaldo(false)">
-          <img src="assets/occhionascosto.png" />
+          <img src="assets/occhionascosto1.png" />
         </button>
       </div>
       <div class="iban">
         Il tuo IBAN: <br />
         <span>{{ userData?.IBAN }}</span>
       </div>
-    </div>
+    </div> -->
+    <app-credit-card></app-credit-card>
   </div>
 
   <div class="right-container">
@@ -40,4 +40,3 @@
     </div>
   </div>
 </div>
-<app-credit-card></app-credit-card>

@@ -20,17 +20,30 @@
           src="https://raw.githubusercontent.com/muhammederdem/credit-card-form/master/src/assets/images/chip.png"
           alt="Chip"
         />
-        <p>4586 7985 9271 6388</p>
+        <div *ngIf="!saldoNascosto">
+          <p *ngIf="saldo">{{ saldo | currency }}</p>
+          <p *ngIf="!saldo">-</p>
+        </div>
+        <p>{{ saldo | currency }}</p>
+        <img
+          (click)="nascondiSaldo(true)"
+          id="occhio1"
+          src="assets/occhio1.png"
+          alt=""
+        />
+        <p id="iban">IBAN: {{ userData?.IBAN }}</p>
       </div>
       <div class="visa_crinfo">
-        <p></p>
-        <p>Mario Rossi</p>
+        <p>{{ userData?.firstName }} {{ userData?.lastName }}</p>
+        <p>{{ userData?.openingDate | date : "dd/mm/yyyy" }}</p>
       </div>
     </div>
 
-    <!-- Back side of the card -->
+    <!-- Back side of the carSd -->
     <div class="card-back">
-      <div class="black-stripe"></div>
+      <div class="black-stripe">
+        <p class="iban">IBAN: {{ userData?.IBAN }}</p>
+      </div>
     </div>
   </div>
 </div>
