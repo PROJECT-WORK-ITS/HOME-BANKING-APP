@@ -12,23 +12,26 @@
 
 /* Sinistra - Contenitore utente e saldo */
 .left-container {
-  flex: 40%;
-  margin: 4% 0 0 3%;
+  flex: 45%;
+  margin: -7% 0 0 3%;
 }
 
 .right-container {
-  flex: 60%;
+  flex: 80%;
+  margin-top: -11.1%;
 }
 
 /* Stile per il saldo */
 .saldo {
-  width: 50vh;
-  height: 30vh; /* Altezza fissa per il contenitore */
+  width: 52vh;
+  height: 31vh; /* Altezza fissa per il contenitore */
+  border: 2px solid white;
   background-color: whitesmoke;
   border-radius: 15px;
   text-align: center;
   font-size: 25px;
-  margin-top: -2%;
+  margin-top: -3%;
+  margin-left: 2%;
   position: relative; /* Necessario per posizionare il contenuto interno */
 }
 
@@ -81,7 +84,8 @@ button img {
   font-size: 50px;
   font-weight: bolder;
   color: white;
-  margin: 4% 0 10% 0;
+  margin: 2% 0 10% 0;
+  text-align: center;
 }
 
 /* Stile per il saldo nascosto */
@@ -99,7 +103,7 @@ button img {
   display: flex;
   flex-direction: row;
   border-radius: 15px;
-  width: 100vh;
+  width: 124vh;
   height: 10vh;
 }
 
