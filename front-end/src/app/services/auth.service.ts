@@ -42,6 +42,10 @@ export class AuthService {
     this.router.navigate(['/']);
   }
 
+  changePassword(currentPassword: string, newPassword: string) {
+    return this.http.post<null>('/api/change-password', {newPassword, currentPassword});
+  }
+
   private fetchConto() {
     this.http.get<ContiCorrenti>('/api/conti-correnti/me')
       .subscribe(user => this._currentUser$.next(user));

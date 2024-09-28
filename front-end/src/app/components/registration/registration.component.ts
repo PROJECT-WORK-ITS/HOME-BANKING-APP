@@ -1,9 +1,10 @@
 import { AnimationDriver } from '@angular/animations/browser';
 import { Component } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup, ValidatorFn, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, Validators } from '@angular/forms';
 import { catchError, flatMap, throwError } from 'rxjs';
 import { otpService } from '../../services/otp.service';
 import { AuthService } from '../../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-registration',
@@ -30,11 +31,11 @@ export class RegistrationComponent {
 
 
   isSubmitted = false;
-  router: any;
     
   constructor(protected fb: FormBuilder,
               protected otpService: otpService,
-              protected authSrv: AuthService
+              protected authSrv: AuthService,
+              protected router: Router
   ) { }
 
   public nextTab(nTab: number){

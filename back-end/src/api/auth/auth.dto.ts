@@ -25,7 +25,7 @@ export class AddUserDTO {
   @Matches(
     new RegExp('^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$'),
     {
-      message: 'Password non sicura, deve contenere almeno un lettera maiuscola, una minuscola, un numero e un carattere speciale, '
+      message: 'Password non sicura, deve contenere almeno un lettera maiuscola, una minuscola, un numero e un carattere speciale'
     }
   )
   password: string;
@@ -41,3 +41,19 @@ export class LoginDTO {
     @IsString()
     password: string;
   }
+
+
+export class changeDTO {
+
+  @IsString()
+  currentPassword: string;
+
+  @MinLength(8)
+  @Matches(
+    new RegExp('^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$'),
+    {
+      message: 'Password non sicura, deve contenere almeno un lettera maiuscola, una minuscola, un numero e un carattere speciale'
+    }
+  )
+  newPassword: string;
+}

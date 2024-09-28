@@ -1,6 +1,6 @@
 import { NextFunction, Response } from "express";
 import { TypedRequest } from "../../utils/typed-request.interface";
-import { AddUserDTO, LoginDTO } from "./auth.dto";
+import { AddUserDTO, changeDTO, LoginDTO } from "./auth.dto";
 import { omit, pick } from 'lodash';
 import { UserExistsError } from "../../errors/user-exists";
 import contiCorrentiService from "../ContiCorrenti/contiCorrenti.service";
@@ -62,7 +62,7 @@ export const add = async (
 
 // Nuovo: Cambiare password
 export const changePassword = async (
-  req: TypedRequest<{ currentPassword: string; newPassword: string }>,
+  req: TypedRequest<changeDTO>,
   res: Response,
   next: NextFunction
 ) => {
@@ -80,8 +80,9 @@ export const changePassword = async (
     if (!user) {
       return res.status(404).json({ message: 'User non collegato al conto' });
     }
- 
-    if (currentPassword !== user[0].credentials.hashedPassword) {
+    
+    const hashedCurrentPassword = await bcrypt.hash(currentPassword, 10); 
+    if (await bcrypt.compare(hashedCurrentPassword, user[0].credentials.hashedPassword)) {
       return res.status(400).json({ message: 'Incorrect current password.' });
     }
 
