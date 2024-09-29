@@ -5,17 +5,41 @@
     <div class="form-section">
       <form [formGroup]="bonificoForm" (ngSubmit)="onSubmit()">
         <label for="ibanDestinatario">IBAN Destinatario:</label>
+        <div class="input-group">
+          <input
+            id="ibanDestinatario"
+            formControlName="ibanDestinatario"
+            type="text"
+            class="mb-0"
+            [class.is-invalid]="bonificoForm.get('ibanDestinatario')?.invalid
+            && (bonificoForm.get('ibanDestinatario')?.dirty
+            || bonificoForm.get('ibanDestinatario')?.touched
+            || isSubmitted)">
+          <div class="invalid-tooltip margi">
+              {{ bonificoForm.get('ibanDestinatario')?.invalid ? "IBAN incorretto" : undefined }}
+          </div>
+        </div>
+
+        <label class="importo mt-4">Importo:</label> 
         <input
-          id="ibanDestinatario"
-          formControlName="ibanDestinatario"
-          type="text"
-        />
+          id="importo"
+          formControlName="importo"
+          type="number"
+          class="mb-0" />
 
-        <label for="importo">Importo:</label>
-        <input id="importo" formControlName="importo" type="number" />
+        <label class="mt-4" for="descrizione">Descrizione (Opzionale):</label>
+        <input
+          id="descrizione"
+          formControlName="descrizione"
+          type="text" />
 
-        <label for="descrizione">Descrizione (Opzionale):</label>
-        <input id="descrizione" formControlName="descrizione" type="text" />
+        <div class="text-danger mb-3" *ngIf="bonificoError">
+            {{ bonificoError }}
+        </div>
+
+        <div class="text-success mb-3" *ngIf="bonificoSucc">
+          {{ bonificoSucc }}
+        </div>
 
         <button type="submit" [disabled]="!bonificoForm.valid">
           Effettua Bonifico

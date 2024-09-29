@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { BonificoService } from '../../services/bonifico.service';
 import { AuthService } from '../../services/auth.service';
+import { ContiCorrenti } from '../../entities/conto-corrente.entity';
+import { catchError, throwError } from 'rxjs';
 
 @Component({
   selector: 'app-bonifico',
@@ -9,8 +11,16 @@ import { AuthService } from '../../services/auth.service';
   styleUrl: './bonifico.component.css',
 })
 export class BonificoComponent implements OnInit {
-  bonificoForm!: FormGroup;
-  userData: any;
+  
+  bonificoForm = this.fb.group({
+    ibanDestinatario: ['', [Validators.required, Validators.pattern('^[A-Z0-9]+$')],],
+    importo: ['', [Validators.required, Validators.min(1)]],
+    descrizione: [''],
+  })
+  isSubmitted = false;
+  bonificoError = "";
+  bonificoSucc = "";
+  userData: ContiCorrenti | null = null;
 
   constructor(
     private fb: FormBuilder,
@@ -20,8 +30,8 @@ export class BonificoComponent implements OnInit {
 
   ngOnInit(): void {
     this.authSrv.currentUser$.subscribe({
-      next: (data) => {
-        this.userData = data;
+      next: (user) => {
+        this.userData = user;
       },
       error: (err) => {
         console.error(
@@ -29,27 +39,27 @@ export class BonificoComponent implements OnInit {
           err
         );
       },
-    });   
-    this.bonificoForm = this.fb.group({
-      ibanDestinatario: [
-        '',
-        [Validators.required, Validators.pattern('^[A-Z0-9]+$')],
-      ],
-      importo: ['', [Validators.required, Validators.min(1)]],
-      descrizione: [''],
     });
   }
 
   onSubmit(): void {
     if (this.bonificoForm.valid) {
-      let bonificoData = this.bonificoForm.value;
-      bonificoData.ibanMittente = this.userData.IBAN;
-      this.bonificoService.effettuaBonifico(bonificoData).subscribe(
+
+      const ibanMittente = this.userData?.IBAN;
+      const { ibanDestinatario, importo, descrizione } = this.bonificoForm.value;
+
+      this.bonificoService.effettuaBonifico(ibanMittente!, ibanDestinatario!, importo!, descrizione!)
+      .pipe(
+        catchError(err => {
+          this.bonificoSucc = "";
+          this.bonificoError = "Errore nell'inserimento dei dati";  
+          return throwError(() => err);  
+        })
+      )
+      .subscribe(
         (response) => {
-          console.log('Bonifico effettuato con successo!', response);
-        },
-        (error) => {
-          console.error('Errore durante il bonifico:', error);
+          this.bonificoSucc = "Bonifico effettuato con successo";
+          this.bonificoError = "";  
         }
       );
     }

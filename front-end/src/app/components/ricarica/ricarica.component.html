@@ -28,6 +28,15 @@
       <option value="50">50€</option>
       <option value="100">100€</option>
     </select>
+
+    <div class="text-danger mb-3" *ngIf="ricaricaError">
+      {{ ricaricaError }}
+    </div>
+
+    <div class="text-success mb-3" *ngIf="ricaricaSub">
+      {{ ricaricaSub }}
+    </div>
+
     <button class="submit-btn">Invia</button>
   </form>
 </div>

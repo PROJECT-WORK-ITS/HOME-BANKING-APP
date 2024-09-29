@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { RicaricaService } from '../../services/ricarica.service';
 import { AuthService } from '../../services/auth.service';
+import { catchError, throwError } from 'rxjs';
 
 @Component({
   selector: 'app-ricarica',
@@ -11,6 +12,8 @@ import { AuthService } from '../../services/auth.service';
 export class RicaricaComponent implements OnInit {
   ricaricaForm!: FormGroup;
   userData:any;
+  ricaricaError = ""
+  ricaricaSub = ""
 
   constructor(
     private fb: FormBuilder,
@@ -50,16 +53,19 @@ export class RicaricaComponent implements OnInit {
       };
 
       // Invia i dati al servizio per la richiesta al backend
-      this.ricaricaService.effettuaRicarica(ricaricaData).subscribe({
-        next: (response) => {
-          console.log('Ricarica effettuata con successo', response);
-          // Aggiungi eventuali logiche di successo, come visualizzare un messaggio all'utente
-        },
-        error: (error) => {
-          console.error('Errore durante la ricarica', error);
-          // Aggiungi gestione errori, come mostrare un messaggio di errore
-        },
-      });
+      this.ricaricaService.effettuaRicarica(ricaricaData).pipe(
+        catchError(err => {
+          this.ricaricaSub = "";
+          this.ricaricaError = "Errore nell'inserimento dei dati";  
+          return throwError(() => err);  
+        })
+      )
+      .subscribe(
+        () => {
+          this.ricaricaSub = "Ricarica effettuato con successo";
+          this.ricaricaError = ""; 
+        }
+      );
     }
   }
 }
