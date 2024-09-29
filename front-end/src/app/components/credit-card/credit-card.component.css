@@ -5,9 +5,16 @@
 }
 
 .main-container {
-  display: flex;
+  display: flex; 
   flex-direction: row;
   justify-content: center;
+  align-items: flex-start;
+
+  /* Ombra per l'intero contenitore */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Ombra leggera */
+  border-radius: 15px; /* Rende gli angoli arrotondati */
+  padding: 20px; /* Aggiunge un padding interno */
+  margin-top: 20px; /* Aggiungi margine per distanziare da altri elementi */
 }
 
 /* Sinistra - Contenitore utente e saldo */
@@ -30,8 +37,10 @@
   font-size: 25px;
   margin-top: -2%;
   position: relative; /* Necessario per posizionare il contenuto interno */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Ombra per la carta di saldo */
 }
 
+/* Padding per la parte superiore */
 .top {
   padding-top: 15px;
 }
@@ -86,7 +95,7 @@ button img {
 
 /* Stile per il saldo nascosto */
 .saldo-nascosto {
-  font-size: 40px; /* Dimensione della scritta "Saldo Nascosto" */
+  font-size: 30px; /* Dimensione della scritta "Saldo Nascosto" */
   text-align: center; /* Centrato orizzontalmente */
 }
 
