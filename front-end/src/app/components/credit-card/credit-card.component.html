@@ -1,49 +1,25 @@
-<div class="container right-container">
-  <div
-    class="credit-card"
-    [ngClass]="{ flipped: isFlipped }"
-    (click)="toggleFlip()"
-  >
-    <!-- Front side of the card -->
-    <div class="card-front">
-      <div class="visa_logo">
-        <img
-          src="https://raw.githubusercontent.com/muhammederdem/credit-card-form/master/src/assets/images/visa.png"
-          alt="Visa Logo"
-        />
-      </div>
-      <div class="visa-name-bank">
-        <p>CREDIT PAUL</p>
-      </div>
-      <div class="visa_info">
-        <img
-          src="https://raw.githubusercontent.com/muhammederdem/credit-card-form/master/src/assets/images/chip.png"
-          alt="Chip"
-        />
-        <div *ngIf="!saldoNascosto">
-          <p *ngIf="saldo">{{ saldo | currency }}</p>
-          <p *ngIf="!saldo">-</p>
-        </div>
-        <p>{{ saldo | currency }}</p>
-        <img
-          (click)="nascondiSaldo(true)"
-          id="occhio1"
-          src="assets/occhio1.png"
-          alt=""
-        />
-        <p id="iban">IBAN: {{ userData?.IBAN }}</p>
-      </div>
-      <div class="visa_crinfo">
-        <p>{{ userData?.firstName }} {{ userData?.lastName }}</p>
-        <p>{{ userData?.openingDate | date : "dd/mm/yyyy" }}</p>
-      </div>
-    </div>
+<div class="saldo">
+  <div class="top">Saldo Corrente</div>
 
-    <!-- Back side of the carSd -->
-    <div class="card-back">
-      <div class="black-stripe">
-        <p class="iban">IBAN: {{ userData?.IBAN }}</p>
-      </div>
+  <div class="bottom" *ngIf="!saldoNascosto">
+    <div>
+      <span *ngIf="saldo">{{ saldo }}</span>
+      <span *ngIf="!saldo">-</span>
     </div>
+    <button (click)="nascondiSaldo(true)">
+      <img src="assets/occhio.png" />
+    </button>
+  </div>
+
+  <div class="bottom" *ngIf="saldoNascosto">
+    <div class="saldo-nascosto">Saldo Nascosto</div>
+    <button (click)="nascondiSaldo(false)">
+      <img src="assets/occhionascosto.png" />
+    </button>
+  </div>
+
+  <div class="iban">
+    Il tuo IBAN: <br />
+    <span>{{ userData?.IBAN }}</span>
   </div>
 </div>
