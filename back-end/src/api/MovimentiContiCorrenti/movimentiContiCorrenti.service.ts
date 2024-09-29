@@ -4,6 +4,20 @@ import { MovimentiContiCorrenti } from "./movimentiContiCorrenti.entity";
 import movimentiContiCorrentiModel from "./movimentiContiCorrenti.model";
 
 export class MovimentiContiCorrentiService {
+
+  public async addFirstMoviemento(contoCorrenteId: string, categoriaMovimentoId: string | null) {
+    const movimento = new MovimentiContiCorrenteModel({
+      contoCorrenteId,
+      categoriaMovimentoId: categoriaMovimentoId,
+      data: new Date(),
+      importo: 1000,
+      saldo: 1000,
+      descrizione: "Inizializzazione conto corrente",
+    });
+    await movimento.save();
+    return movimento;
+  }
+
   // Funzione per ottenere il saldo attuale basato sui movimenti
   private async getSaldoCorrente(contoCorrenteId: string): Promise<number> {
     // Trova il movimento più recente in base alla data

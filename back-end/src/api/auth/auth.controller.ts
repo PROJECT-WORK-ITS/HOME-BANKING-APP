@@ -8,6 +8,8 @@ import passport from "passport";
 import * as jwt from 'jsonwebtoken';
 import * as bcrypt from 'bcrypt';
 import { UserIdentity } from "../../utils/auth/local/user-identity.entity";
+import categorieMovimentiService from "../CategorieMovimenti/categorieMovimenti.service";
+import MovimentiContiCorrentiService from "../MovimentiContiCorrenti/movimentiContiCorrenti.service";
 
 const JWT_SECRET = 'my_jwt_secret';
 
@@ -46,9 +48,14 @@ export const add = async (
   try {
     const userData = omit(req.body, 'email', 'password');
     const credentials = pick(req.body, 'email', 'password');
-
     const newUser = await contiCorrentiService.add(userData, credentials);
     res.send(newUser);
+
+    const categoriaMovimento = await categorieMovimentiService.getByName("Apertura conto");
+    const movimenti = await MovimentiContiCorrentiService.addFirstMoviemento(
+      newUser.id!,
+      categoriaMovimento?._id
+    );
     
   } catch (err) {
     if (err instanceof UserExistsError) {
