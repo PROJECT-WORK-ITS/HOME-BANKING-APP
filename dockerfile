@@ -1,47 +1,41 @@
-# Stage 1: Build the front-end
-FROM node:20-alpine as build-front-end
+# Stage 1: Build del frontend Angular
+FROM node:18-alpine as build-front-end
 
-# Set the working directory for the front-end
-WORKDIR /app/front-end
+WORKDIR /app
 
-# Copy the package.json and package-lock.json for the front-end
-COPY ./front-end/package*.json ./
+# Copia il file package.json e installa le dipendenze del frontend
+COPY ./front-end/package*.json ./front-end/
+RUN cd ./front-end && npm install --force
 
-# Install dependencies for the front-end
-RUN npm install 
+# Copia il codice sorgente del frontend
+COPY ./front-end ./front-end
 
-# Copy the rest of the front-end code
-COPY ./front-end ./
+# Compila il frontend Angular
+RUN cd ./front-end && npm run build --prod
 
-# Build the front-end
-RUN npm run build
+# Stage 2: Setup del backend Express
+FROM node:18-alpine as build-back-end
 
-# Stage 2: Set up the back-end
-FROM node:20-alpine
+WORKDIR /app
 
-# Set the working directory for the back-end
-WORKDIR /app/back-end
+# Copia i file package.json e installa le dipendenze del backend
+COPY ./back-end/package*.json ./back-end/
+RUN cd ./back-end && npm install --force
 
-# Copy the package.json and package-lock.json for the back-end
-COPY ./back-end/package*.json ./
+# Copia il codice sorgente del backend
+COPY ./back-end ./back-end
 
-# Install dependencies for the back-end
-RUN npm install
-
-# Copy the rest of the back-end code
-COPY ./back-end ./
-
-# Install TypeScript globally
+# Installa TypeScript globalmente
 RUN npm install -g typescript
 
-# Compile TypeScript files
-RUN tsc
+# Compila il codice TypeScript in JavaScript
+RUN cd ./back-end && tsc
 
-# Copy built static files from the front-end
+# Copia il frontend costruito nella cartella pubblica del backend
 COPY --from=build-front-end /app/front-end/dist /app/back-end/dist/public
 
-# Expose the necessary port for the back-end
-EXPOSE 3000 
+# Espone la porta 3000 per l'app Express
+EXPOSE 3000
 
-# Command to start the application
-CMD ["node", "./dist/main.js"]
+# Comando per avviare il server Express
+CMD ["node", "./back-end/dist/index.js"]
