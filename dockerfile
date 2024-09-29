@@ -1,5 +1,5 @@
 # Immagine base
-FROM node:16-alpine
+FROM node:20-alpine
 
 # Imposta la directory di lavoro per il back-end
 WORKDIR /app/back-end
