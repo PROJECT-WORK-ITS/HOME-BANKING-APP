@@ -1,7 +1,6 @@
 import { Router } from "express";
 import MovimentiContiCorrentiController from "./movimentiContiCorrenti.controller";
 import movimentiContiCorrentiController from "./movimentiContiCorrenti.controller";
-import movimentiContiCorrentiModel from "./movimentiContiCorrenti.model";
 import { isAuthenticated } from "../../utils/auth/authenticated.middleware";
 
 const router = Router();
@@ -20,5 +19,6 @@ router.get(
   "/ultimoMovimento/:contoCorrenteId",
   MovimentiContiCorrentiController.getUltimoMovimento
 );
+router.post("/primomovimento", MovimentiContiCorrentiController.addFirstMovimento);
 
 export default router;

@@ -88,7 +88,6 @@ export class RegistrationComponent {
     this.isSubmitted = true;
 
     if (this.otpForm.valid) {
-
       this.otpService.verify(this.signUpForm.get('email')?.value!, this.otpForm.get('otp')?.value!)
       .pipe(
         catchError(err => {
@@ -99,7 +98,9 @@ export class RegistrationComponent {
       .subscribe((otp) => {
         console.log(otp)
         if (otp.valid) {
-          this.isSubmitted = false;
+
+          
+
           this.router.navigate(['/login'])
         }
       });

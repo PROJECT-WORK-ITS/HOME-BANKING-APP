@@ -13,9 +13,9 @@ class CategorieMovimentiController {
 
   public async create(req: Request, res: Response): Promise<void> {
     try {
-      console.log("Richiesta Ricevuta", req.body);
+      const {nomeCategoria, tipologia} = req.body;
       const categoria =
-        await CategorieMovimentiService.createCategoriaMovimento(req.body);
+        await CategorieMovimentiService.createCategoriaMovimento(nomeCategoria, tipologia);
       res.status(201).json(categoria);
     } catch (error) {
       res

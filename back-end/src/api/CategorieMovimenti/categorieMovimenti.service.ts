@@ -6,10 +6,15 @@ class CategorieMovimentiService {
     return await CategorieMovimentiModel.find();
   }
 
+  public async getByName(nomeCategoria: string): Promise<CategoriaMovimento | null> {
+    return await CategorieMovimentiModel.findOne({ nomeCategoria });
+  }
+
   public async createCategoriaMovimento(
-    data: CategoriaMovimento
+    nomeCategoria: string,
+    tipologia: string
   ): Promise<CategoriaMovimento> {
-    const categoria = new CategorieMovimentiModel(data);
+    const categoria = new CategorieMovimentiModel({nomeCategoria, tipologia});
     return await categoria.save();
   }
 

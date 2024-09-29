@@ -1,5 +1,7 @@
 import { Request, Response } from "express";
 import MovimentiContiCorrentiService from "./movimentiContiCorrenti.service";
+import categorieMovimentiService from "../CategorieMovimenti/categorieMovimenti.service";
+import { Q } from "@faker-js/faker/dist/airline-BBTAAfHZ";
 
 class MovimentiContiCorrentiController {
   // Gestione della richiesta di bonifico (POST)
@@ -98,6 +100,26 @@ class MovimentiContiCorrentiController {
       const ultimoMovimento =
         await MovimentiContiCorrentiService.getUltimoMovimento(contoCorrenteId);
       res.json(ultimoMovimento);
+    } catch (error) {
+      res.status(500).json({ error: error as Error });
+    }
+    return res;
+  }
+
+  public async addFirstMovimento(
+    req: Request,
+    res: Response
+  ): Promise<Response> {
+    try {
+      const {contoCorrenteId} = req.body;
+      const categoriaMovimento = await categorieMovimentiService.getByName("Apertura conto");
+      console.log(categoriaMovimento);
+      const movimenti = await MovimentiContiCorrentiService.addFirstMoviemento(
+        contoCorrenteId,
+        categoriaMovimento?._id
+      );
+      console.log(movimenti);
+      res.json(movimenti);
     } catch (error) {
       res.status(500).json({ error: error as Error });
     }
