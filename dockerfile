@@ -1,20 +1,32 @@
-# Usa l'immagine ufficiale di Node.js
+# Immagine base
 FROM node:16
 
-# Imposta la directory di lavoro all'interno del container
-WORKDIR /app
+# Imposta la directory di lavoro per il back-end
+WORKDIR /app/back-end
 
-# Copia i file package.json e package-lock.json nella directory di lavoro
-COPY package*.json ./
+# Copia il file package.json e package-lock.json del back-end
+COPY back-end/package*.json ./
 
-# Installa le dipendenze necessarie
+# Installa le dipendenze per il back-end
 RUN npm install --production
 
-# Copia tutto il resto del codice dell'app nella directory di lavoro
-COPY . .
+# Copia tutto il codice del back-end
+COPY back-end/ ./
 
-# Specifica la porta su cui l'app sarà in ascolto
-EXPOSE 3000
+# Imposta la directory di lavoro per il front-end
+WORKDIR /app/front-end
 
-# Definisci il comando per avviare l'app
-CMD ["npm", "start"]
+# Copia il file package.json e package-lock.json del front-end
+COPY front-end/package*.json ./
+
+# Installa le dipendenze per il front-end
+RUN npm install --production
+
+# Copia tutto il codice del front-end
+COPY front-end/ ./
+
+# Espone le porte necessarie per il back-end e il front-end (se necessario)
+EXPOSE 3000 4200 
+
+# Comando di avvio (modifica in base a come avvii il tuo progetto)
+CMD ["npm", "start"]  # o qualsiasi comando per avviare il progetto
