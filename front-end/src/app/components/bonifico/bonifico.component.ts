@@ -59,6 +59,7 @@ export class BonificoComponent implements OnInit {
       .subscribe(
         (response) => {
           this.bonificoSucc = "Bonifico effettuato con successo";
+          this.bonificoError = "";  
         }
       );
     }
