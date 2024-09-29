@@ -13,7 +13,7 @@ const serverPort = getEnvVariable("SERVER_PORT");
 
 mongoose.set("debug", true);
 mongoose
-  .connect(`mongodb://${dbHost}:${dbPort}/${dbName}`)
+  .connect(`mongodb+srv://karimlaakroud:N0OY7tdMALlPDnKN@karim.y3ogwl5.mongodb.net/?retryWrites=true&w=majority&appName=karim`)
   .then((_) => {
     app.listen(serverPort, () => {
       console.log(
