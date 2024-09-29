@@ -5,23 +5,36 @@
 }
 
 .main-container {
-  display: flex;
+  display: flex; 
   flex-direction: row;
   justify-content: center;
+  align-items: flex-start; /* Allinea il contenuto all'inizio */
 }
 
 /* Sinistra - Contenitore utente e saldo */
 .left-container {
   flex: 45%;
-  margin: -7% 0 0 3%;
+  margin: -7% 0 0 3%; /* Mantiene una posizione adeguata */
 }
 
 .right-container {
   flex: 80%;
   margin-top: -11.1%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end; /* Allinea il contenuto sulla destra */
 }
 
-/* Stile per il saldo */
+/* Stile per il nome dell'utente */
+.nome {
+  font-size: 40px;
+  font-weight: bolder;
+  color: white;
+  margin: 2% 0 10% 3%; /* Ridotto il margine a sinistra per allinearlo alla carta */
+  text-align: left;
+}
+
+/* Stile per la carta di credito */
 .saldo {
   width: 52vh;
   height: 31vh; /* Altezza fissa per il contenitore */
@@ -33,6 +46,9 @@
   margin-top: -3%;
   margin-left: 2%;
   position: relative; /* Necessario per posizionare il contenuto interno */
+  
+  /* Ombra per effetto 3D */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3), 0 6px 20px rgba(0, 0, 0, 0.2); /* Ombra a più livelli */
 }
 
 .top {
@@ -79,32 +95,23 @@ button img {
   border-top: 1px solid black;
 }
 
-/* Stile per il nome dell'utente */
-.nome {
-  font-size: 50px;
-  font-weight: bolder;
-  color: white;
-  margin: 2% 0 10% 0;
-  text-align: center;
-}
-
 /* Stile per il saldo nascosto */
 .saldo-nascosto {
   font-size: 30px; /* Dimensione della scritta "Saldo Nascosto" */
   text-align: center; /* Centrato orizzontalmente */
-
   margin-right: 30px;
 }
 
 /* Stile per i movimenti */
 .movimento {
-  margin-top: 40px;
+  margin-top: 0; /* Mantiene i movimenti in alto */
   background-color: whitesmoke;
   display: flex;
   flex-direction: row;
   border-radius: 15px;
   width: 124vh;
   height: 10vh;
+  align-self: flex-start; /* Mantiene i movimenti allineati in alto */
 }
 
 .movimento img {
