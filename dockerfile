@@ -8,7 +8,7 @@ WORKDIR /app/back-end
 COPY back-end/package*.json ./
 
 # Installa le dipendenze per il back-end
-RUN npm install --production
+RUN npm install 
 
 # Copia tutto il codice del back-end
 COPY back-end/ ./
@@ -20,7 +20,7 @@ WORKDIR /app/front-end
 COPY front-end/package*.json ./
 
 # Installa le dipendenze per il front-end
-RUN npm install --production
+RUN npm install 
 
 # Copia tutto il codice del front-end
 COPY front-end/ ./
@@ -29,4 +29,4 @@ COPY front-end/ ./
 EXPOSE 3000 4200 
 
 # Comando di avvio (modifica in base a come avvii il tuo progetto)
-CMD ["npm", "start"]  # o qualsiasi comando per avviare il progetto
+CMD npm start  
