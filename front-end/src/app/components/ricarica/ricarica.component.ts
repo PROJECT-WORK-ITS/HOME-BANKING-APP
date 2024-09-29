@@ -48,7 +48,6 @@ export class RicaricaComponent implements OnInit {
         importo: this.ricaricaForm.value.importo,
         descrizione:''
       };
-      console.log('Dati del form:', ricaricaData);
 
       // Invia i dati al servizio per la richiesta al backend
       this.ricaricaService.effettuaRicarica(ricaricaData).subscribe({
