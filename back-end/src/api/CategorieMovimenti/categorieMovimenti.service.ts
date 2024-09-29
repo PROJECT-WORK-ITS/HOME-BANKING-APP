@@ -10,6 +10,10 @@ class CategorieMovimentiService {
     return await CategorieMovimentiModel.findOne({ nomeCategoria });
   }
 
+  public async getById(categoriaId: string): Promise<CategoriaMovimento | null> {
+    return await CategorieMovimentiModel.findOne({ categoriaId });
+  }
+
   public async createCategoriaMovimento(
     nomeCategoria: string,
     tipologia: string
