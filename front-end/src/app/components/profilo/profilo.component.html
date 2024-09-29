@@ -1,7 +1,7 @@
 <div class="profile-container">
     <div class="profile-card">
       <h2 class="profile-info">INFORMAZIONI SUL PROFILO</h2>
-      <p><strong>E-mail:</strong> mariorossigmail.com</p>
+      <p><strong>E-mail:</strong> {{userData?.email}}</p>
       <p><strong>Cognome:</strong> {{userData?.lastName}}</p>
       <p><strong>Nome:</strong> {{userData?.firstName}}</p>
       <p><strong>Data Apertura:</strong> {{userData?.openingDate | date:'dd MMMM yyyy'}}</p>

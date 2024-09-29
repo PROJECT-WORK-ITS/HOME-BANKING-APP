@@ -1,30 +1,33 @@
 <div class="container">
-  <h3>Inserisci il tuo numero</h3>
-  <input
-    type="tel"
-    class="form-control"
-    placeholder="Inserisci il tuo numero di telefono"
-    required
-  />
+  <form [formGroup]="ricaricaForm" (ngSubmit)="onSubmit()">
+    <h3>Inserisci il tuo numero</h3>
+    <input
+      formControlName ="numeroTelefono"
+      type="tel"
+      class="form-control"
+      placeholder="Inserisci il tuo numero di telefono"
+      required
+    />
 
-  <h3 class="operatore">Scegli il tuo operatore</h3>
-  <select class="form-control">
-    <option value="iliad">Iliad</option>
-    <option value="tim">Tim</option>
-    <option value="windtre">WindTRE</option>
-    <option value="postemobile">PosteMobile</option>
-    <option value="verymobile">VeryMobile</option>
-    <option value="vodafone">Vodafone</option>
-  </select>
+    <h3 class="operatore">Scegli il tuo operatore</h3>
+    <select class="form-control" formControlName ="operatore">
+      <option value="iliad">Iliad</option>
+      <option value="tim">Tim</option>
+      <option value="windtre">WindTRE</option>
+      <option value="postemobile">PosteMobile</option>
+      <option value="verymobile">VeryMobile</option>
+      <option value="vodafone">Vodafone</option>
+    </select>
 
-  <h3>Scegli l'importo della tua ricarica</h3>
-  <select class="form-control">
-    <option value="5">5€</option>
-    <option value="10">10€</option>
-    <option value="20">20€</option>
-    <option value="30">30€</option>
-    <option value="50">50€</option>
-    <option value="100">100€</option>
-  </select>
-  <button class="submit-btn">Invia</button>
+    <h3>Scegli l'importo della tua ricarica</h3>
+    <select class="form-control" formControlName ="importo">
+      <option value="5">5€</option>
+      <option value="10">10€</option>
+      <option value="20">20€</option>
+      <option value="30">30€</option>
+      <option value="50">50€</option>
+      <option value="100">100€</option>
+    </select>
+    <button class="submit-btn">Invia</button>
+  </form>
 </div>

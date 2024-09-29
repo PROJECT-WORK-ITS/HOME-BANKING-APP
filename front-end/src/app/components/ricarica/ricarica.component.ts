@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { RicaricaService } from '../../services/ricarica.service';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-ricarica',
@@ -9,13 +10,26 @@ import { RicaricaService } from '../../services/ricarica.service';
 })
 export class RicaricaComponent implements OnInit {
   ricaricaForm!: FormGroup;
+  userData:any;
 
   constructor(
     private fb: FormBuilder,
-    private ricaricaService: RicaricaService
+    private ricaricaService: RicaricaService,
+    private authSrv: AuthService
   ) {}
 
   ngOnInit(): void {
+    this.authSrv.currentUser$.subscribe({
+      next: (data) => {
+        this.userData = data;
+      },
+      error: (err) => {
+        console.error(
+          "Errore nel recupero delle informazioni dell'user",
+          err
+        );
+      },
+    });  
     this.ricaricaForm = this.fb.group({
       numeroTelefono: [
         '',
@@ -29,7 +43,11 @@ export class RicaricaComponent implements OnInit {
   // Metodo che viene chiamato al submit del form
   onSubmit(): void {
     if (this.ricaricaForm.valid) {
-      const ricaricaData = this.ricaricaForm.value;
+      const ricaricaData = {
+        contocorrenteId: this.userData.id,
+        importo: this.ricaricaForm.value.importo,
+        descrizione:''
+      };
       console.log('Dati del form:', ricaricaData);
 
       // Invia i dati al servizio per la richiesta al backend
