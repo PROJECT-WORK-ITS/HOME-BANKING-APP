@@ -19,7 +19,11 @@
     </div>
     <div class="detail-item">
       <strong>Importo:</strong>
-      <span id="importo-movimento">{{ movimento?.importo | currency }}</span>
+      <span
+        id="importo-movimento"
+        *ngIf="movimento?.categoriaMovimentoId?.tipologia === 'Uscita'"
+        >- {{ movimento?.importo | currency }}</span
+      >
     </div>
     <div class="detail-item">
       <strong>Saldo:</strong>
