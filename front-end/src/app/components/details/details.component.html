@@ -22,8 +22,7 @@
       <span
         id="importo-movimento"
         *ngIf="movimento?.categoriaMovimentoId?.tipologia === 'Uscita'"
-        >- {{ movimento?.importo | currency }}</span
-      >
+        >- </span> {{ movimento?.importo | currency }}
     </div>
     <div class="detail-item">
       <strong>Saldo:</strong>
