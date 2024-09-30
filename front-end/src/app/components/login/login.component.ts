@@ -15,7 +15,7 @@ export class LoginComponent {
     password: ['', Validators.required]
   })
   isSubmitted = false;
-
+  private intervalId: any;
   loginError = '';
 
   constructor(protected fb: FormBuilder,
@@ -23,6 +23,18 @@ export class LoginComponent {
     private router: Router
   ) { }
 
+  ngOnInit(): void {
+    this.intervalId = setInterval(() => {
+      this.refreshPage();
+    }, 30000);
+  }
+  ngOnDestroy(): void {
+    clearInterval(this.intervalId);
+  }
+
+  refreshPage(): void {
+    window.location.reload();
+  }
   login() {
     this.isSubmitted = true;
     if (this.loginForm.valid) {
