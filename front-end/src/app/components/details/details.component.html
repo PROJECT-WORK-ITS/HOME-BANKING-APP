@@ -5,7 +5,7 @@
         <img src="assets/ricarica.png" alt="Icona movimento" />
         <div class="title">
             <h3>Dettaglio movimento</h3>
-            <span>Bonifico</span>
+            <span>{{movimento?.descrizione}}</span>
         </div>
     </div>
 
@@ -14,23 +14,23 @@
        
         <div class="detail-item">
             <strong>Data:</strong>
-            <span id="data-movimento">19/09/2024</span>
+            <span id="data-movimento">{{movimento?.data  | date:'dd MMMM yyyy'}}</span>
         </div>
         <div class="detail-item">
             <strong>Importo:</strong>
-            <span id="importo-movimento">-213,45 €</span>
+            <span id="importo-movimento">{{movimento?.importo}}</span>
         </div>
         <div class="detail-item">
             <strong>Saldo:</strong>
-            <span id="saldo-movimento">2.350,75 €</span>
+            <span id="saldo-movimento">{{movimento?.saldo}}€</span>
         </div>
         <div class="detail-item">
             <strong>CategoriaMovimento:</strong>
-            <span id="categoria-movimento">Bonifico</span>
+            <span id="categoria-movimento">{{movimento?.categoriaMovimentoId}}</span>
         </div>
         <div class="detail-item">
             <strong>DescrizioneEstesa:</strong>
-            <span id="descrizione-estesa">Pagamento fattura elettricità Settembre 2024</span>
+            <span id="descrizione-estesa">{{movimento?.descrizione}}</span>
         </div>
     </div>
 </div>
