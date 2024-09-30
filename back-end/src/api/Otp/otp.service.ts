@@ -8,10 +8,12 @@ export class OtpService {
 
     async sendOtp(email: string, otp: string): Promise<OtpEntity> {
 
+        console.log(getEnvVariable("AUTH_EMAIL"))
+        console.log(getEnvVariable("AUTH_PASSWORD"))
         const transporter = nodemailer.createTransport({
             host: "smtp.gmail.com",
-            port: 587,
-            secure: false,
+            port: 465,
+            secure: true,
             auth: {
                 user: getEnvVariable("AUTH_EMAIL"),
                 pass: getEnvVariable("AUTH_PASSWORD"),
