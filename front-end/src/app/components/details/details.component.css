@@ -66,13 +66,4 @@ body {
     font-weight: bold;
   }
   
-  /* Personalizzazione dell'importo in negativo */
-  #importo-movimento {
-    color: red;
-  }
-  
-  /* Personalizzazione del saldo */
-  #saldo-movimento {
-    color: green;
-  }
   
