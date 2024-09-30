@@ -1,145 +1,190 @@
 <div class="container">
-    <div class="title">
-        <h3>Seleziona il tipo di filtro</h3>
-    </div>
-    <div class="select-filter">
-        <button  type="button" class="filter" (click)="selectedFilter(1)" [ngClass]="{'selected': filter === 1}">
-            Visualizza movimenti e saldo
-        </button>
-        <button type="button" class="filter" (click)="selectedFilter(2)"  [ngClass]="{'selected': filter === 2}">
-            Cerca movimenti per categoria
-        </button>
-        <button type="button" class="filter" (click)="selectedFilter(3)" [ngClass]="{'selected': filter === 3}">
-            Cerca movimenti per intervallo di date
-        </button>
-    </div>
+  <div class="title">
+    <h3>Seleziona il tipo di filtro</h3>
+  </div>
+  <div class="select-filter">
+    <button
+      type="button"
+      class="filter"
+      (click)="selectedFilter(1)"
+      [ngClass]="{ selected: filter === 1 }"
+    >
+      Visualizza movimenti e saldo
+    </button>
+    <button
+      type="button"
+      class="filter"
+      (click)="selectedFilter(2)"
+      [ngClass]="{ selected: filter === 2 }"
+    >
+      Cerca movimenti per categoria
+    </button>
+    <button
+      type="button"
+      class="filter"
+      (click)="selectedFilter(3)"
+      [ngClass]="{ selected: filter === 3 }"
+    >
+      Cerca movimenti per intervallo di date
+    </button>
+  </div>
 
-    <div class="bottom">
-        <div class="filter">
-            <div *ngIf="filter === 0" class="option">
-                <h4>Filtri</h4><br>
+  <div class="bottom">
+    <div class="filter">
+      <div *ngIf="filter === 0" class="option">
+        <h4>Filtri</h4>
+        <br />
+      </div>
+      <form [formGroup]="filter1" (ngSubmit)="onSubmit1()">
+        <div *ngIf="filter === 1" class="option">
+          <h4>Filtri</h4>
+          <br />
+          Inserisci il numero di movimenti che vuoi visualizzare:
+          <input
+            formControlName="nMovimenti"
+            type="number"
+            min="1"
+          /><br /><br /><br />
+          <h5>Saldo attuale:</h5>
+          <div class="saldo">{{ saldo | currency }}</div>
+          <button class="submit-btn">Invia</button>
+        </div>
+      </form>
+
+      <form [formGroup]="filter2" (ngSubmit)="onSubmit2()">
+        <div *ngIf="filter === 2" class="option">
+          <h4>Filtri</h4>
+          <br />
+          Inserisci il numero di movimenti che vuoi visualizzare:
+          <input
+            formControlName="nMovimenti"
+            type="number"
+            min="1"
+          /><br /><br />
+          Inserisci la categoria di movimento:
+          <select class="form-control" formControlName="categoria">
+            <option value="66f998e293cf5d497ba4b9bb">Ricarica</option>
+            <option value="66f998b293cf5d497ba4b9af">
+              Bonifico in entrata
+            </option>
+            <option value="66f998bd93cf5d497ba4b9b2">Bonifico in uscita</option>
+            <option value="66f9985e93cf5d497ba4b9ac">Apertura conto</option>
+            <option value="66f998cd93cf5d497ba4b9b5">Prelievo contanti</option>
+            <option value="66f998d693cf5d497ba4b9b8">Pagamento utenze</option>
+          </select>
+          <button class="submit-btn">Invia</button>
+        </div>
+      </form>
+
+      <form [formGroup]="filter3" (ngSubmit)="onSubmit3()">
+        <div *ngIf="filter === 3" class="option">
+          <h4>Filtri</h4>
+          <br />
+          Inserisci il numero di movimenti che vuoi visualizzare:
+          <input
+            formControlName="nMovimenti"
+            type="number"
+            min="1"
+          /><br /><br />
+
+          Inserisci l'intervallo di date:
+          <form class="row row-cols-sm-auto">
+            <div class="col-12">
+              <div class="dp-hidden position-absolute">
+                <div class="input-group">
+                  <input
+                    name="datepicker"
+                    class="form-control"
+                    ngbDatepicker
+                    #datepicker="ngbDatepicker"
+                    [autoClose]="'outside'"
+                    (dateSelect)="onDateSelection($event)"
+                    [displayMonths]="2"
+                    [dayTemplate]="t"
+                    outsideDays="hidden"
+                    [startDate]="fromDate!"
+                    tabindex="-1"
+                  />
+                  <ng-template #t let-date let-focused="focused">
+                    <span
+                      class="custom-day"
+                      [class.focused]="focused"
+                      [class.range]="isRange(date)"
+                      [class.faded]="isHovered(date) || isInside(date)"
+                      (mouseenter)="hoveredDate = date"
+                      (mouseleave)="hoveredDate = null"
+                    >
+                      {{ date.day }}
+                    </span>
+                  </ng-template>
+                </div>
+              </div>
+              <div class="input-group">
+                <input
+                  #dpFromDate
+                  class="form-control"
+                  placeholder="yyyy-mm-dd"
+                  name="dpFromDate"
+                  [value]="formatter.format(fromDate)"
+                  (input)="fromDate = validateInput(fromDate, dpFromDate.value)"
+                  formControlName="dataInizio"
+                />
+                <button
+                  class="button-calendar"
+                  (click)="datepicker.toggle()"
+                  type="button"
+                >
+                  <img src="assets/calendar.png" />
+                </button>
+              </div>
             </div>
-            <form  [formGroup]="filter1" (ngSubmit)="onSubmit1()">
-                <div *ngIf="filter === 1" class="option">
-                    <h4>Filtri</h4><br>
-                    Inserisci il numero di movimenti che vuoi visualizzare:
-                    <input formControlName="nMovimenti" type="number" min="1"><br><br><br>
-                    <h5>Saldo attuale:</h5>
-                    <div class="saldo">{{saldo | currency}}</div>
-                    <button class="submit-btn">Invia</button>
-                </div>
-            </form>
+            <div class="col-12">
+              <div class="input-group">
+                <input
+                  #dpToDate
+                  class="form-control"
+                  placeholder="yyyy-mm-dd"
+                  name="dpToDate"
+                  [value]="formatter.format(toDate)"
+                  (input)="toDate = validateInput(toDate, dpToDate.value)"
+                  formControlName="dataFine"
+                />
+                <button
+                  class="button-calendar"
+                  (click)="datepicker.toggle()"
+                  type="button"
+                >
+                  <img src="assets/calendar.png" />
+                </button>
+              </div>
+            </div>
+          </form>
 
-            <form  [formGroup]="filter2" (ngSubmit)="onSubmit2()">
-                <div *ngIf="filter === 2" class="option">
-                    <h4>Filtri</h4><br>
-                    Inserisci il numero di movimenti che vuoi visualizzare:
-                    <input formControlName="nMovimenti" type="number" min="1"><br><br>
-                    Inserisci la categoria di movimento:
-                    <select class="form-control"  formControlName="categoria" >
-                        <option value="66f998e293cf5d497ba4b9bb">Ricarica</option>
-                        <option value="66f998b293cf5d497ba4b9af">Bonifico in entrata</option>
-                        <option value="66f998bd93cf5d497ba4b9b2">Bonifico in uscita</option>
-                        <option value="66f9985e93cf5d497ba4b9ac">Apertura conto</option>
-                        <option value="66f998cd93cf5d497ba4b9b5">Prelievo contanti</option>
-                        <option value="66f998d693cf5d497ba4b9b8">Pagamento utenze</option>
-                    </select>
-                    <button class="submit-btn">Invia</button>
-                </div>
-            </form>
-
-            <form  [formGroup]="filter3" (ngSubmit)="onSubmit3()">
-                <div *ngIf="filter === 3" class="option">
-                    <h4>Filtri</h4><br>
-                    Inserisci il numero di movimenti che vuoi visualizzare:
-                    <input formControlName="nMovimenti" type="number" min="1"><br><br>
-                    
-                    Inserisci l'intervallo di date:
-                    <form class="row row-cols-sm-auto">
-                        <div class="col-12">
-                            <div class="dp-hidden position-absolute">
-                                <div class="input-group">
-                                    <input
-                                        name="datepicker"
-                                        class="form-control"
-                                        ngbDatepicker
-                                        #datepicker="ngbDatepicker"
-                                        [autoClose]="'outside'"
-                                        (dateSelect)="onDateSelection($event)"
-                                        [displayMonths]="2"
-                                        [dayTemplate]="t"
-                                        outsideDays="hidden"
-                                        [startDate]="fromDate!"
-                                        tabindex="-1"
-                                    />
-                                    <ng-template #t let-date let-focused="focused">
-                                        <span
-                                            class="custom-day"
-                                            [class.focused]="focused"
-                                            [class.range]="isRange(date)"
-                                            [class.faded]="isHovered(date) || isInside(date)"
-                                            (mouseenter)="hoveredDate = date"
-                                            (mouseleave)="hoveredDate = null"
-                                        >
-                                            {{ date.day }}
-                                        </span>
-                                    </ng-template>
-                                </div>
-                            </div>
-                            <div class="input-group">
-                                <input
-                                    #dpFromDate
-                                    class="form-control"
-                                    placeholder="yyyy-mm-dd"
-                                    name="dpFromDate"
-                                    [value]="formatter.format(fromDate)"
-                                    (input)="fromDate = validateInput(fromDate, dpFromDate.value)"
-                                    formControlName="dataInizio"
-                                />
-                                <button class="button-calendar" (click)="datepicker.toggle()" type="button"><img src="assets/calendar.png"></button>
-                            </div>
-                        </div>
-                        <div class="col-12">
-                            <div class="input-group">
-                                <input
-                                    #dpToDate
-                                    class="form-control"
-                                    placeholder="yyyy-mm-dd"
-                                    name="dpToDate"
-                                    [value]="formatter.format(toDate)"
-                                    (input)="toDate = validateInput(toDate, dpToDate.value)"
-                                    formControlName="dataFine"
-                                />
-                                <button class="button-calendar" (click)="datepicker.toggle()" type="button"><img src="assets/calendar.png"></button>
-                            </div>
-                        </div>
-                    </form>
-                    
-                    <button class="submit-btn">Invia</button>
-                </div>
-            </form>
+          <button class="submit-btn">Invia</button>
         </div>
-
-        <div class="table-container">
-            <table class="table">
-                <tr>
-                    <th>Data</th>
-                    <th>Importo</th>
-                    <th>Nome categoria</th>
-                </tr>
-                <tr *ngFor="let m of filtered">
-                    <td>
-                        {{m.data  | date:'dd MMMM yyyy'}}
-                    </td>
-                    <td>
-                        {{m.importo | currency }}
-                    </td>
-                    <td>
-                        {{m.categoriaMovimentoId.nomeCategoria}}
-                    </td>
-                </tr>
-            </table>
-
-        </div>
+      </form>
     </div>
+
+    <div class="table-container">
+      <table class="table">
+        <tr>
+          <th>Data</th>
+          <th>Importo</th>
+          <th>Nome categoria</th>
+        </tr>
+        <tr *ngFor="let m of filtered">
+          <td>
+            {{ m.data | date : "dd MMMM yyyy" }}
+          </td>
+          <td>
+            <span *ngIf="m.categoriaMovimentoId.tipologia === 'Uscita'">- </span
+            >{{ m.importo | currency }}
+          </td>
+          <td>
+            {{ m.categoriaMovimentoId.nomeCategoria }}
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
 </div>
