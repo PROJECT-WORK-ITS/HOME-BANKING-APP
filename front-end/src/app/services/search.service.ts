@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { MovimentiContiCorrenti } from '../entities/movimenti-conti-corrente.entity';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,7 @@ export class SearchService {
 
   constructor(private http: HttpClient) {}
 
-  getAllUserMovimenti(contoCorrenteId: any): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}/${contoCorrenteId}`);
+  getAllUserMovimenti(contoCorrenteId: any) {
+    return this.http.get<MovimentiContiCorrenti[]>(`${this.apiUrl}/${contoCorrenteId}`);
   }
 }

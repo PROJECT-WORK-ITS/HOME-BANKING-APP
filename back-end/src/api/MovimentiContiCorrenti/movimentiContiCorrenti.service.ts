@@ -70,7 +70,7 @@ export class MovimentiContiCorrentiService {
     // Crea un movimento di uscita per il mittente
     const movimentoMittente = new MovimentiContiCorrenteModel({
       contoCorrenteId: contoMittente._id,
-      categoriaMovimentoId: "66eaa3fbef2937be4c47a3f3", // gestisci correttamente questa categoria
+      categoriaMovimentoId: "66f998bd93cf5d497ba4b9b2", // gestisci correttamente questa categoria
       importo,
       saldo: saldoMittente - importo, // Il nuovo saldo dopo il movimento
       descrizione,
@@ -85,7 +85,7 @@ export class MovimentiContiCorrentiService {
     // Crea un movimento di entrata per il destinatario
     const movimentoDestinatario = new MovimentiContiCorrenteModel({
       contoCorrenteId: contoDestinatario._id,
-      categoriaMovimentoId: "66eaa3587641b3a851ba60c7", // gestisci correttamente questa categoria
+      categoriaMovimentoId: "66f998b293cf5d497ba4b9af", // gestisci correttamente questa categoria
       importo,
       saldo: saldoDestinatario + importo, // Il nuovo saldo dopo il movimento
       descrizione,
@@ -119,7 +119,7 @@ export class MovimentiContiCorrentiService {
     // Crea il movimento per la ricarica telefonica
     const movimento = new MovimentiContiCorrenteModel({
       contoCorrenteId: data.contocorrenteId,
-      categoriaMovimentoId: "66eaa4a3ef2937be4c47a3fb", // Assumi che tu abbia una categoria per le ricariche
+      categoriaMovimentoId: "66f998e293cf5d497ba4b9bb", // Assumi che tu abbia una categoria per le ricariche
       importo: data.importo,
       saldo: nuovoSaldo,
       descrizione: "Ricarica Telefonica",

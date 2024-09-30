@@ -94,6 +94,7 @@ export class SearchComponent implements OnInit {
 			const n = Number(formData.nMovimenti);
 
 			this.searchService.getAllUserMovimenti(this.userData.id).subscribe({
+
         next: (response) => {
 					console.log(response)
           console.log('Movimenti recuperati con successo', response);
@@ -101,7 +102,7 @@ export class SearchComponent implements OnInit {
 					this.movimenti.reverse();
 					let i = 0;
 					this.movimenti.forEach(m =>{
-						if(m.categoriaMovimentoId === formData.categoria){
+						if(m.categoriaMovimentoId.id === formData.categoria){
 							this.filtered[i] = m;
 							i++;
 						}
