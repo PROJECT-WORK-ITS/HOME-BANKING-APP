@@ -8,15 +8,13 @@ export class OtpService {
 
     async sendOtp(email: string, otp: string): Promise<OtpEntity> {
 
-        console.log(getEnvVariable("AUTH_EMAIL"))
-        console.log(getEnvVariable("AUTH_PASSWORD"))
         const transporter = nodemailer.createTransport({
             host: "smtp.gmail.com",
-            port: 465,
-            secure: true,
+            port: 587,
+            secure: false,
             auth: {
-                user: getEnvVariable("AUTH_EMAIL"),
-                pass: getEnvVariable("AUTH_PASSWORD"),
+                user: "polbanking@gmail.com",
+                pass: "dwgb wtwz zyje rrnt",
             },
         });
 
@@ -27,7 +25,7 @@ export class OtpService {
         <p>Una volta attivato l'account puoi accedere alle informazioni sul tuo conto tramite il sito. Se la persona che ha provato a registrarsi non sei tu, per favore ignora il messaggio</p>`;
 
         const mailOptions = {
-            from: getEnvVariable("AUTH_EMAIL"),
+            from: "polbanking@gmail.com",
             to: email,
             subject: "Verify your email",
             html: htmlOtp
