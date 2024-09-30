@@ -25,7 +25,7 @@
                     Inserisci il numero di movimenti che vuoi visualizzare:
                     <input formControlName="nMovimenti" type="number" min="1"><br><br><br>
                     <h5>Saldo attuale:</h5>
-                    <div class="saldo">{{saldo}}€</div>
+                    <div class="saldo">{{saldo | currency}}</div>
                     <button class="submit-btn">Invia</button>
                 </div>
             </form>
@@ -131,7 +131,7 @@
                         {{m.data  | date:'dd MMMM yyyy'}}
                     </td>
                     <td>
-                        {{m.importo}}
+                        {{m.importo | currency }}
                     </td>
                     <td>
                         {{m.categoriaMovimentoId}}

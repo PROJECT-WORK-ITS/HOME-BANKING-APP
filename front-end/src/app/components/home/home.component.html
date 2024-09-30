@@ -15,7 +15,7 @@
         {{m?.descrizione}}<br />
         <a [routerLink]="['/details', m?.id]">Visualizza dettagli</a>
       </div>
-      <div class="prezzo">{{m?.importo}}€</div>
+      <div class="prezzo">{{m?.importo | currency}}</div>
     </div>
   </div>
 </div>

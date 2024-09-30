@@ -3,7 +3,7 @@
 
   <div class="bottom" *ngIf="!saldoNascosto">
     <div>
-      <span *ngIf="saldo">{{ saldo }}</span>
+      <span *ngIf="saldo">{{ saldo | currency }}</span>
       <span *ngIf="!saldo">-</span>
     </div>
     <button (click)="nascondiSaldo(true)">
