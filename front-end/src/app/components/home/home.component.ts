@@ -42,7 +42,6 @@ export class HomeComponent implements OnInit {
         console.error("Errore nel recupero delle informazioni dell'user", err);
       },
     });
-    
   }
 
   loadAccountInfo(): void {
@@ -62,8 +61,20 @@ export class HomeComponent implements OnInit {
     }
   }
 
+  public movimentoUscita(mId: string): boolean {
+    if (
+      mId === '66f998bd93cf5d497ba4b9b2' ||
+      '66f998cd93cf5d497ba4b9b5' ||
+      '66f998d693cf5d497ba4b9b8' ||
+      '66f998e293cf5d497ba4b9bb'
+    ) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   public nascondiSaldo(condition: boolean) {
     this.saldoNascosto = condition;
   }
 }
-
