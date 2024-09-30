@@ -23,7 +23,7 @@ export class AddUserDTO {
 
   @MinLength(8)
   @Matches(
-    new RegExp('^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$'),
+    new RegExp('^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[\\W_]).+$'),
     {
       message: 'Password non sicura, deve contenere almeno un lettera maiuscola, una minuscola, un numero e un carattere speciale'
     }
@@ -50,7 +50,7 @@ export class changeDTO {
 
   @MinLength(8)
   @Matches(
-    new RegExp('^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$'),
+    new RegExp('^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[\\W_]).+$'),
     {
       message: 'Password non sicura, deve contenere almeno un lettera maiuscola, una minuscola, un numero e un carattere speciale'
     }
