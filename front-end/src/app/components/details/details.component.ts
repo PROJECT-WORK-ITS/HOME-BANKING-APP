@@ -42,7 +42,7 @@ export class DetailsComponent implements OnInit {
         this.movimenti = response;
         this.movimenti.reverse();
         this.movimento = this.movimenti.find(
-          (m) => m.movimentoId === this.idMovimento
+          (m) => m.id === this.idMovimento
         );
       },
       error: (error) => {
