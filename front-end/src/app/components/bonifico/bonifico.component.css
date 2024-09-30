@@ -86,7 +86,7 @@ button {
   width: 160px; /* Riduce leggermente la larghezza del pulsante */
   padding: 12px 18px;
   margin-top: 20px;
-  background-color: #007aff;
+  background: linear-gradient(135deg, #437ac7, #5bc0de);
   color: white;
   border: none;
   border-radius: 15px;
