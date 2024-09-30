@@ -89,6 +89,7 @@ export class SearchComponent implements OnInit {
 
 	onSubmit2(){
 		if (this.filter2.value.nMovimenti){
+			this.filtered = [];
 			const formData = this.filter2.value;
 			const n = Number(formData.nMovimenti);
 
@@ -102,6 +103,7 @@ export class SearchComponent implements OnInit {
 					this.movimenti.forEach(m =>{
 						if(m.categoriaMovimentoId === formData.categoria){
 							this.filtered[i] = m;
+							i++;
 						}
 					});
 					this.filtered = this.filtered.slice(0, n);
@@ -123,6 +125,7 @@ export class SearchComponent implements OnInit {
 	
 	onSubmit3(){
 		if (this.filter3.value.nMovimenti && this.fromDate && this.toDate){
+			this.filtered = [];
 			const formData = this.filter3.value;
 			const n = Number(formData.nMovimenti);
 
