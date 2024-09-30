@@ -13,9 +13,9 @@
       <img src="assets/ricarica.png" />
       <div class="details">
         {{m.descrizione}}<br />
-        <a [routerLink]="['/details', m.movimentoId]">Visualizza dettagli</a>
+        <a [routerLink]="['/details', m?.movimentoId]">Visualizza dettagli</a>
       </div>
-      <div class="prezzo">{{m.importo}}€</div>
+      <div class="prezzo">{{m?.importo}}€</div>
     </div>
   </div>
 </div>
