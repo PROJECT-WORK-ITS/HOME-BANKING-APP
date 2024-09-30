@@ -7,7 +7,7 @@ import { de } from '@faker-js/faker';
   providedIn: 'root',
 })
 export class BonificoService {
-  private apiUrl = 'http://localhost:3000/api/movimenti-conti-correnti'; // URL dell'API
+  private apiUrl = '/api/movimenti-conti-correnti'; // URL dell'API
 
   constructor(private http: HttpClient) {}
 
