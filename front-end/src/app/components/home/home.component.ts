@@ -25,23 +25,24 @@ export class HomeComponent implements OnInit {
       next: (data) => {
         this.userData = data;
         this.loadAccountInfo();
+        this.searchService.getAllUserMovimenti(this.userData.id).subscribe({
+          next: (response) => {
+            console.log('Movimenti recuperati con successo', response);
+            this.movimenti = response;
+            this.movimenti.reverse();
+            this.movimenti = this.movimenti.slice(0, 5);
+          },
+          error: (error) => {
+            console.error('Errore durante il recupero dei movimenti', error);
+            // Aggiungi gestione errori, come mostrare un messaggio di errore
+          },
+        });
       },
       error: (err) => {
         console.error("Errore nel recupero delle informazioni dell'user", err);
       },
     });
-    this.searchService.getAllUserMovimenti(this.userData.id).subscribe({
-      next: (response) => {
-        console.log('Movimenti recuperati con successo', response);
-        this.movimenti = response;
-        this.movimenti.reverse();
-        this.movimenti = this.movimenti.slice(0, 5);
-      },
-      error: (error) => {
-        console.error('Errore durante il recupero dei movimenti', error);
-        // Aggiungi gestione errori, come mostrare un messaggio di errore
-      },
-    });
+    
   }
 
   loadAccountInfo(): void {

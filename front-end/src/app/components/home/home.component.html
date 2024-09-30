@@ -12,7 +12,7 @@
     <div class="movimento" *ngFor="let m of movimenti">
       <img src="assets/ricarica.png" />
       <div class="details">
-        {{m.descrizione}}<br />
+        {{m?.descrizione}}<br />
         <a [routerLink]="['/details', m?.movimentoId]">Visualizza dettagli</a>
       </div>
       <div class="prezzo">{{m?.importo}}€</div>
