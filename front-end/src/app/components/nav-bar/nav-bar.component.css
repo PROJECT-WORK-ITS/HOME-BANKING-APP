@@ -18,6 +18,7 @@ a:hover {
 nav {
   background-color: whitesmoke !important;
   padding: 15px 25px;
+  margin: 0;
 }
 
 .logo {
