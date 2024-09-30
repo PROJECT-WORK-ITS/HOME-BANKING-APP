@@ -12,7 +12,7 @@ export class MovimentiContiCorrentiService {
       data: new Date(),
       importo: 1000,
       saldo: 1000,
-      descrizione: "Inizializzazione conto corrente",
+      descrizione: "Apertura conto",
     });
     await movimento.save();
     return movimento;

@@ -17,10 +17,8 @@
         <a [routerLink]="['/details', m?.id]">Visualizza dettagli</a>
       </div>
       <div class="prezzo">
-        <span *ngIf="m.categoriaMovimentoId.tipologia === 'Uscita'" >-</span
-        >{{ m?.importo | currency }}
+        <span *ngIf="m.categoriaMovimentoId.tipologia === 'Uscita'" >-</span>{{ m?.importo | currency }}
       </div>
-      <div class="prezzo">{{ m?.importo | currency }}</div>
     </div>
   </div>
 </div>
