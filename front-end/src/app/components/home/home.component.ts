@@ -66,3 +66,4 @@ export class HomeComponent implements OnInit {
     this.saldoNascosto = condition;
   }
 }
+
