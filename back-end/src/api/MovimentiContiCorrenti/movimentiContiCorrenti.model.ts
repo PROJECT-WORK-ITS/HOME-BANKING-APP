@@ -19,8 +19,7 @@ MovimentiContiCorrentiSchema.set("toJSON", {
     delete ret._id;
     delete ret.__v;
     return ret;
-  },
-});
+  }});
 
 MovimentiContiCorrentiSchema.set("toObject", {
   virtuals: true,
