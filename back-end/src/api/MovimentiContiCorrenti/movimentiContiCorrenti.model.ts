@@ -5,7 +5,7 @@ const MovimentiContiCorrentiSchema: Schema = new Schema({
   contoCorrenteId: { type: Schema.Types.ObjectId, ref: "ContiCorrenti" },
   categoriaMovimentoId: {
     type: Schema.Types.ObjectId,
-    ref: "CategorieMovimenti",
+    ref: "CategoriaMovimenti",
   },
   data: { type: Date, default: Date.now, require: true },
   importo: { type: Number, require: true },

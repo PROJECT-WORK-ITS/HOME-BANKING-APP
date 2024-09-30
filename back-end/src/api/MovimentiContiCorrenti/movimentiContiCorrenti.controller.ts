@@ -48,16 +48,6 @@ class MovimentiContiCorrentiController {
         id
       );
 
-      const movimentiConCategoria = await Promise.all(
-        movimenti.map(async (movimento) => {
-          // Assumiamo che movimento.id rappresenti l'ID della categoria, puoi modificare se necessario
-          const categoriaMovimento = await categorieMovimentiService.getById(movimento.categoriaMovimentoId); 
-          return {
-            ...movimento,
-            nomeCategoria: categoriaMovimento?.nomeCategoria // Aggiunge il nome della categoria al movimento
-          };
-        })
-      );
       res.json(movimenti);
     } catch (error) {
       console.error(error);

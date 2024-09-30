@@ -7,6 +7,7 @@ const CategorieMovimentiSchema: Schema = new Schema({
 });
 
 CategorieMovimentiSchema.set("toJSON", {
+  virtuals: true,
   transform: (_, ret) => {
     delete ret._id;
     delete ret.__v;
@@ -15,6 +16,7 @@ CategorieMovimentiSchema.set("toJSON", {
 });
 
 CategorieMovimentiSchema.set("toObject", {
+  virtuals: true,
   transform: (_, ret) => {
     delete ret._id;
     delete ret.__v;

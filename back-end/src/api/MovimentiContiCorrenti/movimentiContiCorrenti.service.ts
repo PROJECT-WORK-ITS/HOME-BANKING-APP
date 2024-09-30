@@ -143,7 +143,7 @@ export class MovimentiContiCorrentiService {
     // Recupera i movimenti per il conto corrente specificato
     const movimenti = await MovimentiContiCorrenteModel.find({
       contoCorrenteId,
-    });
+    }).populate('categoriaMovimentoId');
     // Restituisce i movimenti trovati
     return movimenti;
   }

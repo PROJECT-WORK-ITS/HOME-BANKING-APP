@@ -11,7 +11,11 @@ class CategorieMovimentiService {
   }
 
   public async getById(categoriaId: string): Promise<CategoriaMovimento | null> {
-    return await CategorieMovimentiModel.findOne({ categoriaId });
+    console.log(categoriaId);
+    const prova = await CategorieMovimentiModel.findOne({ id: categoriaId });
+    console.log("aaaaa")
+    console.log(prova)
+    return prova
   }
 
   public async createCategoriaMovimento(
