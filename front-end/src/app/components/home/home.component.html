@@ -1,22 +1,21 @@
-<div class="nome">
-  Benvenuto <br>
-  <span>{{ userData?.firstName }} </span> <span>{{ userData?.lastName }}!</span>
-</div>
-
-
 <div class="main-container">
   <div class="left-container">
+    <div class="nome">
+      Benvenuto <br>
+      <span>{{ userData?.firstName }} </span> <span>{{ userData?.lastName }}!</span>
+    </div>
+    
     <app-credit-card></app-credit-card>
   </div>
 
   <div class="right-container">
-    <div class="movimento">
+    <div class="movimento" *ngFor="let m of movimenti">
       <img src="assets/ricarica.png" />
       <div class="details">
-        APERTURA CONTO<br />
-        <a href="/details">Visualizza dettagli</a>
+        {{m.descrizione}}<br />
+        <a [routerLink]="['/details', m.movimentoId]">Visualizza dettagli</a>
       </div>
-      <div class="prezzo">0.00€</div>
+      <div class="prezzo">{{m.importo}}€</div>
     </div>
   </div>
 </div>

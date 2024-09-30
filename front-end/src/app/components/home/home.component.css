@@ -14,13 +14,13 @@
 /* Sinistra - Contenitore utente e saldo */
 .left-container {
   flex: 45%;
-  margin: -7% 0 0 3%; /* Mantiene una posizione adeguata */
+  margin: 5% 0 0 3%; /* Mantiene una posizione adeguata */
 }
 
 .right-container {
   flex: 80%;
-  margin-top: -11.1%;
   display: flex;
+  margin-top: 2%;
   flex-direction: column;
   align-items: flex-end; /* Allinea il contenuto sulla destra */
 }
@@ -43,9 +43,7 @@
   border-radius: 15px;
   text-align: center;
   font-size: 25px;
-  margin-top: -3%;
   margin-left: 2%;
-  position: relative; /* Necessario per posizionare il contenuto interno */
   
   /* Ombra per effetto 3D */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3), 0 6px 20px rgba(0, 0, 0, 0.2); /* Ombra a più livelli */
@@ -112,6 +110,7 @@ button img {
   width: 124vh;
   height: 10vh;
   align-self: flex-start; /* Mantiene i movimenti allineati in alto */
+  margin-bottom: 3%;
 }
 
 .movimento img {
