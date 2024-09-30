@@ -17,7 +17,7 @@
         <a [routerLink]="['/details', m?.id]">Visualizza dettagli</a>
       </div>
       <div class="prezzo">
-        <span *ngIf="movimentoUscita(m.categoriaMovimentoId.id!)">-</span
+        <span *ngIf="m.categoriaMovimentoId.tipologia === 'Uscita'" )>-</span
         >{{ m?.importo | currency }}
       </div>
     </div>
