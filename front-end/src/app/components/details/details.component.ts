@@ -7,12 +7,12 @@ import { AuthService } from '../../services/auth.service';
 @Component({
   selector: 'app-details',
   templateUrl: './details.component.html',
-  styleUrl: './details.component.css'
+  styleUrl: './details.component.css',
 })
-export class DetailsComponent implements OnInit{
-  public idMovimento!:any;
-  public movimenti: MovimentiContiCorrenti []=[];
-  public movimento: MovimentiContiCorrenti | undefined ;
+export class DetailsComponent implements OnInit {
+  public idMovimento!: any;
+  public movimenti: MovimentiContiCorrenti[] = [];
+  public movimento: MovimentiContiCorrenti | undefined;
   public userData: any;
 
   constructor(
@@ -27,16 +27,13 @@ export class DetailsComponent implements OnInit{
         this.userData = data;
       },
       error: (err) => {
-        console.error(
-          "Errore nel recupero delle informazioni dell'user",
-          err
-        );
+        console.error("Errore nel recupero delle informazioni dell'user", err);
       },
-    });  
-    const id = this.route.snapshot.paramMap.get('idMovimento'); // Get the route parameter
+    });
+    const id = this.route.snapshot.paramMap.get('id'); // Get the route parameter
     if (id) {
       this.idMovimento = +id; // Convert to number
-      console.log(this.idMovimento)
+      console.log(this.idMovimento);
     }
 
     this.searchService.getAllUserMovimenti(this.userData.id).subscribe({
@@ -44,7 +41,9 @@ export class DetailsComponent implements OnInit{
         console.log('Movimenti recuperati con successo', response);
         this.movimenti = response;
         this.movimenti.reverse();
-        this.movimento = this.movimenti.find(m => m.movimentoId === this.idMovimento);
+        this.movimento = this.movimenti.find(
+          (m) => m.id === this.idMovimento
+        );
       },
       error: (error) => {
         console.error('Errore durante il recupero dei movimenti', error);

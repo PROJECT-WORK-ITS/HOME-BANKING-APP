@@ -14,14 +14,15 @@ const MovimentiContiCorrentiSchema: Schema = new Schema({
 });
 
 MovimentiContiCorrentiSchema.set("toJSON", {
+  virtuals: true,
   transform: (_, ret) => {
     delete ret._id;
     delete ret.__v;
     return ret;
-  },
-});
+  }});
 
 MovimentiContiCorrentiSchema.set("toObject", {
+  virtuals: true,
   transform: (_, ret) => {
     delete ret._id;
     delete ret.__v;

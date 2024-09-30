@@ -1,7 +1,7 @@
 import { Document } from "mongoose";
 
 export interface MovimentiContiCorrenti extends Document {
-  movimentoId?: string;
+  id?: string;
   contoCorrenteId: string;
   categoriaMovimentoId: string;
   data: Date;

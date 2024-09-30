@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class CreditCardService {
   private apiUrl =
-    'http://localhost:3000/api/movimenti-conti-correnti/ultimoMovimento';
+    '/api/movimenti-conti-correnti/ultimoMovimento';
 
   constructor(private http: HttpClient) {}
 

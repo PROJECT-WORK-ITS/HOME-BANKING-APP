@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class RicaricaService {
   private apiUrl =
-    'http://localhost:3000/api/movimenti-conti-correnti/ricarica';
+    '/api/movimenti-conti-correnti/ricarica';
 
   constructor(private http: HttpClient) {}
 
