@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 export class SearchService {
   
   private apiUrl =
-    'http://localhost:3000/api/movimenti-conti-correnti/allUserMovimenti';
+    '/api/movimenti-conti-correnti/allUserMovimenti';
 
   constructor(private http: HttpClient) {}
 
