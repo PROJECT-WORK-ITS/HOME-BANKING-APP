@@ -14,6 +14,7 @@ const MovimentiContiCorrentiSchema: Schema = new Schema({
 });
 
 MovimentiContiCorrentiSchema.set("toJSON", {
+  virtuals: true,
   transform: (_, ret) => {
     delete ret._id;
     delete ret.__v;
@@ -22,6 +23,7 @@ MovimentiContiCorrentiSchema.set("toJSON", {
 });
 
 MovimentiContiCorrentiSchema.set("toObject", {
+  virtuals: true,
   transform: (_, ret) => {
     delete ret._id;
     delete ret.__v;
