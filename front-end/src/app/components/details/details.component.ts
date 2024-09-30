@@ -30,7 +30,7 @@ export class DetailsComponent implements OnInit {
         console.error("Errore nel recupero delle informazioni dell'user", err);
       },
     });
-    const id = this.route.snapshot.paramMap.get('idMovimento'); // Get the route parameter
+    const id = this.route.snapshot.paramMap.get('id'); // Get the route parameter
     if (id) {
       this.idMovimento = +id; // Convert to number
       console.log(this.idMovimento);
