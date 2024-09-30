@@ -87,9 +87,11 @@ export const changePassword = async (
     if (!user) {
       return res.status(404).json({ message: 'User non collegato al conto' });
     }
-    
-    const hashedCurrentPassword = await bcrypt.hash(currentPassword, 10); 
-    if (await bcrypt.compare(hashedCurrentPassword, user[0].credentials.hashedPassword)) {
+     
+    if (await bcrypt.compare(currentPassword, user[0].credentials.hashedPassword)) {
+      
+    }
+    else {
       return res.status(400).json({ message: 'Incorrect current password.' });
     }
 
