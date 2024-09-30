@@ -1,5 +1,5 @@
 export interface MovimentiContiCorrenti {
-  movimentoId?: string;
+  id?: string;
   contoCorrenteId: string;
   categoriaMovimentoId: string;
   data: Date;
