@@ -20,7 +20,7 @@ export class BonificoComponent implements OnInit {
   isSubmitted = false;
   bonificoError = "";
   bonificoSucc = "";
-  userData: ContiCorrenti | null = null;
+  userData: any | null = null;
 
   constructor(
     private fb: FormBuilder,
@@ -51,8 +51,13 @@ export class BonificoComponent implements OnInit {
       this.bonificoService.effettuaBonifico(ibanMittente!, ibanDestinatario!, importo!, descrizione!)
       .pipe(
         catchError(err => {
+          console.log(this.userData.saldo, importo)
+          if(this.userData.saldo === 0 || (this.userData.saldo < importo!) || this.userData.saldo === undefined){
+            this.bonificoError = "Saldo non sufficiente";
+          }else{
+            this.bonificoError = "Errore nell'inserimento dei dati";  
+          }
           this.bonificoSucc = "";
-          this.bonificoError = "Errore nell'inserimento dei dati";  
           return throwError(() => err);  
         })
       )

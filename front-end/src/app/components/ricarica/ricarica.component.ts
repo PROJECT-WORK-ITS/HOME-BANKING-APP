@@ -55,8 +55,12 @@ export class RicaricaComponent implements OnInit {
       // Invia i dati al servizio per la richiesta al backend
       this.ricaricaService.effettuaRicarica(ricaricaData).pipe(
         catchError(err => {
+          if(this.userData.saldo === 0 || (this.userData.saldo < ricaricaData.importo) || this.userData.saldo === undefined){
+            this.ricaricaError = "Saldo non sufficiente";
+          }else{
+            this.ricaricaError = "Errore nell'inserimento dei dati";  
+          }
           this.ricaricaSub = "";
-          this.ricaricaError = "Errore nell'inserimento dei dati";  
           return throwError(() => err);  
         })
       )
