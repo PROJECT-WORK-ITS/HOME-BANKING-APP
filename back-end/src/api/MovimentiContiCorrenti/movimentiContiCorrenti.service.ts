@@ -122,7 +122,7 @@ export class MovimentiContiCorrentiService {
       categoriaMovimentoId: "66eaa4a3ef2937be4c47a3fb", // Assumi che tu abbia una categoria per le ricariche
       importo: data.importo,
       saldo: nuovoSaldo,
-      descrizione: "Rcarica Telefonica",
+      descrizione: "Ricarica Telefonica",
       // La data viene impostata automaticamente nel modello
     });
 
