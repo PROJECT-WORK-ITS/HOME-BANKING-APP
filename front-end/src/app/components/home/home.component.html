@@ -1,10 +1,11 @@
 <div class="main-container">
   <div class="left-container">
     <div class="nome">
-      Benvenuto <br>
-      <span>{{ userData?.firstName }} </span> <span>{{ userData?.lastName }}!</span>
+      Benvenuto <br />
+      <span>{{ userData?.firstName }} </span>
+      <span>{{ userData?.lastName }}!</span>
     </div>
-    
+
     <app-credit-card></app-credit-card>
   </div>
 
@@ -12,10 +13,13 @@
     <div class="movimento" *ngFor="let m of movimenti">
       <img src="assets/ricarica.png" />
       <div class="details">
-        {{m?.descrizione}}<br />
+        {{ m?.descrizione }}<br />
         <a [routerLink]="['/details', m?.id]">Visualizza dettagli</a>
       </div>
-      <div class="prezzo">{{m?.importo | currency}}</div>
+      <div class="prezzo">
+        <span *ngIf="movimentoUscita(m.categoriaMovimentoId.id!)">-</span
+        >{{ m?.importo | currency }}
+      </div>
     </div>
   </div>
 </div>
