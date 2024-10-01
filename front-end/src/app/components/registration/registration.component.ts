@@ -16,6 +16,7 @@ export class RegistrationComponent {
   public tab: number = 1;
   registerError: string = '';
   otpError: string = '';
+  filter = 0;
 
   signUpForm = this.fb.group({
     email: ['', [Validators.required, Validators.email]],
@@ -54,17 +55,19 @@ export class RegistrationComponent {
   }
 
   registerSubmit() {
+    this.filter = 1;
     this.isSubmitted = true;
 
     if (this.signUpForm.valid) {
       
       if (this.checkMatchPassword(this.signUpForm.get('password')?.value, this.signUpForm.get('confirmpassword')?.value)) {
-
+        
         const { email, password, name, surname } = this.signUpForm.value;
         this.authSrv.register(email!, password!, name!, surname!)
         .pipe(
           catchError(err => {
             this.registerError = err.error.message || 'Email already in use';  
+            this.filter = 0;
             return throwError(() => err);  
           })
         )
@@ -72,6 +75,7 @@ export class RegistrationComponent {
           if (contoCorrente) {
             this.registerError = "";
             console.log(this.signUpForm.get('email')?.value!)
+          
             this.otpService.send(this.signUpForm.get('email')?.value!).subscribe( () => {
               this.nextTab(1);
               this.isSubmitted = false;
@@ -81,6 +85,9 @@ export class RegistrationComponent {
         });
           
       }
+    }
+    else {
+      this.filter = 0;
     }
   }
 

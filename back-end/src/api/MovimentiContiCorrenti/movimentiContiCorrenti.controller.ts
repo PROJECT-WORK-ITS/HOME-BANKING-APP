@@ -10,6 +10,7 @@ class MovimentiContiCorrentiController {
     res: Response
   ): Promise<Response> {
     try {
+      console.log("a")
       // Estrai i dati dal corpo della richiesta
       const { ibanMittente, ibanDestinatario, importo, descrizione } = req.body;
       console.log(req.body);
