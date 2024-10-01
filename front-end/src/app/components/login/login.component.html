@@ -14,30 +14,42 @@
               class="form-control"
               formControlName="email"
               placeholder="Email"
-              [class.is-invalid]="loginForm.get('email')?.invalid
-                      && (loginForm.get('email')?.dirty
-                      || loginForm.get('email')?.touched
-                      || isSubmitted)"/>
-              <div class="invalid-tooltip">
-                {{ loginForm.get('email')?.invalid ? "Email non valida" : undefined }}
-              </div>
+              [class.is-invalid]="
+                loginForm.get('email')?.invalid &&
+                (loginForm.get('email')?.dirty ||
+                  loginForm.get('email')?.touched ||
+                  isSubmitted)
+              "
+            />
+            <div class="invalid-tooltip">
+              {{
+                loginForm.get("email")?.invalid ? "Email non valida" : undefined
+              }}
             </div>
+          </div>
         </div>
 
         <div class="form-outline mb-4">
           <label class="form-label">Password</label>
           <div class="input-group">
-          <input
-            type="password"
-            class="form-control"
-            formControlName="password"
-            placeholder="Password"
-            [class.is-invalid]="loginForm.get('password')?.invalid
-            && (loginForm.get('password')?.dirty
-            || loginForm.get('password')?.touched
-            || isSubmitted)"/>
+            <input
+              type="password"
+              class="form-control"
+              formControlName="password"
+              placeholder="Password"
+              [class.is-invalid]="
+                loginForm.get('password')?.invalid &&
+                (loginForm.get('password')?.dirty ||
+                  loginForm.get('password')?.touched ||
+                  isSubmitted)
+              "
+            />
             <div class="invalid-tooltip">
-              {{ loginForm.get('password')?.invalid ? "Password non valida" : undefined }}
+              {{
+                loginForm.get("password")?.invalid
+                  ? "Password non valida"
+                  : undefined
+              }}
             </div>
           </div>
         </div>
@@ -56,7 +68,7 @@
 
     <!-- Div per l'immagine -->
     <div class="col col-lg-5 profile-image">
-      <img src="/assets/homelogin.png" alt="Login Image" />
+      <img src="/assets/image.png" alt="Login Image" />
     </div>
   </div>
 </div>

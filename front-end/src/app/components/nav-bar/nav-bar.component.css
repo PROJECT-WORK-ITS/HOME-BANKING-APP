@@ -27,6 +27,13 @@ nav {
   }
 }
 
+.logo div {
+  font-weight: 800;
+  font-size: larger;
+  padding: 0%;
+  color: rgba(9, 77, 179, 0.8);
+}
+
 .nav-user-avatar {
   height: 40px;
   border-radius: 50%;
