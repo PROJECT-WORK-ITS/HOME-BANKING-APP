@@ -11,7 +11,7 @@ import { ContiCorrenti } from '../../entities/conto-corrente.entity';
 export class CreditCardComponent implements OnInit {
   isFlipped = false;
   public saldo: string = '';
-  public saldoNascosto: boolean = false;
+  public saldoNascosto: boolean = true;
   public userData: ContiCorrenti | null = null;
 
   constructor(

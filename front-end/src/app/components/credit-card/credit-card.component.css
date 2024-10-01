@@ -1,164 +1,104 @@
-@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700&display=swap");
 
-.mail {
-  background-color: white;
+/* Card */
+
+.card {
+  width: 380px;
+  height: 230px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  background: linear-gradient(
+      217deg,
+      rgba(195, 255, 0, 0.8),
+      rgba(255, 0, 0, 0) 70.71%
+    ),
+    linear-gradient(
+      127deg,
+      rgba(13, 176, 217, 0.8),
+      rgba(25, 167, 203, 0) 70.71%
+    ),
+    linear-gradient(336deg, rgba(0, 0, 255, 0.8), rgba(170, 17, 17, 0) 70.71%);
+  border-radius: 10px;
+  z-index: 1;
+  overflow: hidden;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  position: relative;
 }
 
-.main-container {
-  display: flex; 
-  flex-direction: row;
-  justify-content: center;
-  align-items: flex-start;
-
-  /* Ombra per l'intero contenitore */
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Ombra leggera */
-  border-radius: 15px; /* Rende gli angoli arrotondati */
-  padding: 20px; /* Aggiunge un padding interno */
-  margin-top: 20px; /* Aggiungi margine per distanziare da altri elementi */
+.visa_logo {
+  padding: 10px;
 }
 
-/* Sinistra - Contenitore utente e saldo */
-.left-container {
-  flex: 40%;
-  margin: 4% 0 0 3%;
+.visa_logo img {
+  float: inline-end;
+  width: 70px;
+  height: 40px;
 }
 
-.right-container {
-  flex: 60%;
-}
-
-/* Stile per il saldo */
-.saldo {
-  width: 50vh;
-  height: 30vh; /* Altezza fissa per il contenitore */
-  background-color: whitesmoke;
-  border-radius: 15px;
-  text-align: center;
-  font-size: 25px;
-  margin-top: -2%;
-  position: relative; /* Necessario per posizionare il contenuto interno */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Ombra per la carta di saldo */
-}
-
-/* Padding per la parte superiore */
-.top {
-  padding-top: 15px;
-}
-
-/* Contenitore del saldo e pulsante occhio */
-.bottom {
-  font-size: 40px;
+.visa_info .if_saldo {
   display: flex;
-  justify-content: center;
-  align-items: center; /* Centra verticalmente */
-  height: 70px; /* Altezza fissa per la sezione del saldo */
-  position: relative; /* Necessario per posizionare il pulsante */
+  align-items: center;
 }
 
-.bottom div {
-  flex: 1; /* Permette che il saldo occupi spazio */
+.visa_info .if_no_saldo {
+  display: flex;
+  align-items: center;
 }
 
-/* Stile del pulsante occhio */
-button {
-  border: 0;
-  background-color: transparent; /* Trasparente per evitare movimenti */
-  position: absolute; /* Posizionamento assoluto per mantenere l'occhio fisso */
-  right: 20px; /* Posizionato a destra */
-  top: 50%;
-  transform: translateY(-50%); /* Centra verticalmente l'icona */
+.visa_info .if_no_saldo p {
+  margin-right: 45%;
+  font-size: xx-large;
+}
+
+.visa_info {
+  padding: 10px;
+  margin-top: 4%;
+  margin-bottom: 7%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.visa_info img {
+  width: 60px;
+  height: 45px;
+}
+
+.visa_info p {
+  float: right;
+  margin-bottom: -8%;
+  margin-right: 25%;
+  font-size: xx-large;
+  color: #ffffff;
+}
+
+.if_saldo img {
   cursor: pointer;
 }
 
-button img {
-  height: 40px;
-  width: 40px;
+.if_no_saldo img {
+  cursor: pointer;
 }
 
-/* Stile per IBAN */
-.iban {
-  padding-top: 10px;
-  margin-top: 10px;
-  text-align: left;
-  font-size: 17px;
-  padding-left: 10px;
-  border-top: 1px solid black;
+.visa_number p {
+  font-size: small;
+  letter-spacing: 2px;
+  color: #ffffff;
+  margin-left: 5%;
+  float: right;
+  margin-right: 10%;
 }
 
-/* Stile per il nome dell'utente */
-.nome {
-  font-size: 50px;
-  font-weight: bolder;
-  color: white;
-  margin: 4% 0 10% 0;
+.visa_number span {
+  float: left;
+  color: #ffffff;
+  font-size: small;
+  margin-left: 10%;
 }
 
-/* Stile per il saldo nascosto */
-.saldo-nascosto {
-  font-size: 30px; /* Dimensione della scritta "Saldo Nascosto" */
-  text-align: center; /* Centrato orizzontalmente */
-}
-
-/* Stile per i movimenti */
-.movimento {
-  margin-top: 40px;
-  background-color: whitesmoke;
+.visa_crinfo {
   display: flex;
-  flex-direction: row;
-  border-radius: 15px;
-  width: 100vh;
-  height: 10vh;
-}
-
-.movimento img {
-  margin-top: 8px;
-  height: 50px;
-  width: 50px;
-}
-
-/* Dettagli dei movimenti */
-.details {
-  padding-top: 10px;
-  padding-left: 20px;
-  font-weight: bolder;
-}
-
-.details a {
-  text-decoration: none;
-}
-
-/* Stile per il prezzo dei movimenti */
-.prezzo {
-  padding-top: 22px;
-  padding-left: 55vh;
-}
-
-/* Stile per dispositivi più piccoli */
-@media (max-width: 768px) {
-  .main-container {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .left-container,
-  .right-container {
-    width: 100%;
-    margin: 0;
-  }
-
-  .saldo {
-    width: 90%;
-  }
-
-  .movimento {
-    width: 90%;
-    height: auto;
-  }
-
-  .prezzo {
-    padding-left: 0;
-    padding-top: 10px;
-    text-align: right;
-    width: 100%;
-  }
+  justify-content: space-between;
+  padding: 0 10px;
+  color: #ffffff;
 }

@@ -1,4 +1,4 @@
-<div class="saldo">
+<!-- <div class="saldo">
   <div class="top">Saldo Corrente</div>
 
   <div class="bottom" *ngIf="!saldoNascosto">
@@ -21,5 +21,44 @@
   <div class="iban">
     Il tuo IBAN: <br />
     <span>{{ userData?.IBAN }}</span>
+  </div>
+</div> -->
+
+<div class="container">
+  <div class="card">
+    <div class="visa_logo">
+      <img
+        src="https://raw.githubusercontent.com/muhammederdem/credit-card-form/master/src/assets/images/visa.png"
+        alt=""
+      />
+    </div>
+    <div class="visa_info">
+      <img
+        src="https://raw.githubusercontent.com/muhammederdem/credit-card-form/master/src/assets/images/chip.png"
+        alt=""
+      />
+      <div class="if_saldo" *ngIf="!saldoNascosto">
+        <div>
+          <p *ngIf="saldo">{{ saldo | currency }}</p>
+          <p *ngIf="!saldo">-</p>
+        </div>
+        <img src="assets/occhio1.png" (click)="nascondiSaldo(true)" />
+      </div>
+
+      <div class="if_no_saldo" *ngIf="saldoNascosto">
+        <div><p>********</p></div>
+        <img src="assets/occhionascosto1.png" (click)="nascondiSaldo(false)" />
+      </div>
+    </div>
+    <div class="visa_number">
+      <span>IBAN:</span>
+      <p>{{ userData?.IBAN }}</p>
+    </div>
+    <div class="visa_crinfo">
+      <p>
+        {{ userData?.openingDate | date : "yy/MM/dd" }}
+      </p>
+      <p>{{ userData?.firstName }} {{ userData?.lastName }}</p>
+    </div>
   </div>
 </div>
